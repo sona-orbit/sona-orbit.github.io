@@ -8,3 +8,4 @@ Sitemap: https://sona-orbit.github.io/shoo/sitemap.xml
 Sitemap: https://sona-orbit.github.io/konjac/sitemap.xml
 Sitemap: https://sona-orbit.github.io/yoga-glow/sitemap.xml
 Sitemap: https://sona-orbit.github.io/deepstash/sitemap.xml
+Sitemap: https://sona-orbit.github.io/trial-toolbox/sitemap.xml
