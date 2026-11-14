@@ -4,6 +4,10 @@
 <meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<meta name="text-scale" content="scale">
+<meta name="theme-color" content="#f7f8f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101813" media="(prefers-color-scheme: dark)">
+<script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script>
 <title>Sona Orbit</title>
 <meta name="description" content="Sona Orbit — home of a digital nomad who builds small, careful tools for the Mac and iPhone.">
 <link rel="canonical" href="https://sona-orbit.github.io/">
@@ -11,7 +15,7 @@
 <meta property="og:title" content="Sona Orbit">
 <meta property="og:description" content="Home of a digital nomad who builds small, careful tools for the Mac and iPhone.">
 <meta property="og:url" content="https://sona-orbit.github.io/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Sona Orbit","alternateName":["sona-orbit"],"url":"https://sona-orbit.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://sona-orbit.github.io/#website","name":"Sona Orbit","alternateName":["sona-orbit"],"url":"https://sona-orbit.github.io/","publisher":{"@id":"https://sona-orbit.github.io/#person"}},{"@type":"Person","@id":"https://sona-orbit.github.io/#person","name":"Sona Orbit","url":"https://sona-orbit.github.io/","jobTitle":"Independent developer","description":"A digital nomad who builds small, careful tools for the Mac and iPhone.","email":"mailto:sona.orbit.hi@gmail.com","sameAs":["https://www.threads.com/@sona.orbit.hi","https://github.com/sona-orbit"]}]}</script>
 <meta property="og:site_name" content="Sona Orbit">
 <link rel="icon" href="parroting-icon.png">
 <style>
@@ -22,24 +26,27 @@
   .wrap{max-width:720px;margin:0 auto;padding:96px max(20px,env(safe-area-inset-left)) 64px}
   .orbit{width:56px;height:56px;border-radius:50%;border:2px solid var(--green);position:relative;margin-bottom:36px}
   .orbit::after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--green);top:-6px;left:50%;transform:translateX(-50%)}
-  h1{font-size:clamp(40px,8vw,64px);line-height:1.05;margin:0;letter-spacing:-.02em}
-  .lead{font-size:20px;color:var(--muted);margin:18px 0 0;max-width:34em}
-  h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:72px 0 16px}
+  h1{font-size:clamp(2.5rem,0.64rem + 7.2vw,4rem);line-height:1.05;margin:0;letter-spacing:-.02em}
+  .lead{font-size:1.25rem;color:var(--muted);margin:18px 0 0;max-width:34em}
+  h2{font-size:0.875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:72px 0 16px}
   .card{display:flex;gap:18px;align-items:flex-start;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
   .card+.card{margin-top:14px}
   .card:hover{border-color:var(--green)}
   .card:focus-visible{outline:2px solid var(--green);outline-offset:3px}
   .card img{width:56px;height:56px;border-radius:14px;flex:none}
-  .card h3{margin:0;font-size:20px}
+  .card h3{margin:0;font-size:1.25rem}
   .card p{margin:6px 0 0;color:var(--muted)}
   .card .go{color:var(--green);font-weight:600;margin-top:10px;display:inline-block}
   .links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
   .links li{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
-  .links .k{width:80px;flex:none;color:var(--muted);font-size:15px}
+  .links .k{width:80px;flex:none;color:var(--muted);font-size:0.9375rem}
   .links a{color:var(--green);font-weight:600;text-decoration:none;word-break:break-all}
   .links a:hover{text-decoration:underline}
   .links a:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
-  footer{margin-top:80px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:20px}
+  h1,h2,h3{text-wrap:balance}
+  p,li{text-wrap:pretty}
+  @media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
+  footer{margin-top:80px;color:var(--muted);font-size:0.875rem;border-top:1px solid var(--line);padding-top:20px}
 </style>
 </head>
 <body>
@@ -50,7 +57,7 @@
 
   <h2>Things I make</h2>
   <a class="card" href="/parroting/">
-    <img src="parroting-icon.png" alt="">
+    <img src="parroting-icon-192.webp" alt="" width="56" height="56" decoding="async">
     <div>
       <h3>Parroting</h3>
       <p>A Mac assistant that learns how you speak. Hold a key to dictate into any app, get a gentle tone hint before you send something you might regret, and let it get better with you — on your own Mac.</p>
@@ -58,7 +65,7 @@
     </div>
   </a>
   <a class="card" href="/shoo/">
-    <img src="/shoo/assets/icon.png" alt="">
+    <img src="shoo-icon-192.webp" alt="" width="56" height="56" decoding="async">
     <div>
       <h3>Shoo! Stickers</h3>
       <p>A hand-drawn sticker book for your Mac desktop. Click a sticker and the windows you picked disappear. Click again and they’re back.</p>
@@ -66,7 +73,7 @@
     </div>
   </a>
   <a class="card" href="/konjac/">
-    <img src="/konjac/assets/icon-180.png" alt="">
+    <img src="konjac-icon-192.webp" alt="" width="56" height="56" decoding="async">
     <div>
       <h3>Konjac Translate</h3>
       <p>An iPhone translator for travel and work: face-to-face conversation, text translation and your own phrase cards. Translated on your iPhone, even offline.</p>
@@ -75,7 +82,7 @@
   </a>
 
   <a class="card" href="/yoga-glow/">
-    <img src="yoga-glow-icon.png" alt="">
+    <img src="yoga-glow-icon-192.webp" alt="" width="56" height="56" decoding="async" loading="lazy">
     <div>
       <h3>Yoga Glow</h3>
       <p>Fold a whole yoga class video into about 30 seconds, right on your iPhone — plus a calm built-in practice timer. Nothing is uploaded.</p>
@@ -84,7 +91,7 @@
   </a>
 
   <a class="card" href="/deepstash/">
-    <img src="/deepstash/assets/icon-180.png" alt="">
+    <img src="deepstash-icon-192.webp" alt="" width="56" height="56" decoding="async" loading="lazy">
     <div>
       <h3>Deepstash</h3>
       <p>A home inventory and keepsake app for iPhone. Snap a photo and it's stored, with where it is, how many are left and when it expires. Ask Lumi the mascot when you can't find something.</p>
