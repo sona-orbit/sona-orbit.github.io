@@ -10,3 +10,4 @@ Sitemap: https://sona-orbit.github.io/yoga-glow/sitemap.xml
 Sitemap: https://sona-orbit.github.io/deepstash/sitemap.xml
 Sitemap: https://sona-orbit.github.io/trial-toolbox/sitemap.xml
 Sitemap: https://sona-orbit.github.io/chaohaoyue/sitemap.xml
+Sitemap: https://sona-orbit.github.io/boyfriend-cam/sitemap.xml
