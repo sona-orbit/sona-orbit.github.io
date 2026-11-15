@@ -19,9 +19,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:ital,wght@0,400;0,600;1,800&display=swap" rel="stylesheet">
 <style>
-:root{--table:#e4e2dd;--paper:#ffffff;--ink:#141414;--muted:#5d5b57;--line:rgba(0,0,0,.12);--shadow:0 1px 2px rgba(0,0,0,.12),0 8px 22px rgba(0,0,0,.10);--lift:0 2px 4px rgba(0,0,0,.12),0 26px 50px rgba(0,0,0,.22);--note:#fff3a6;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.55)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--table:#1f1e1c;--paper:#f7f6f2;--ink:#141414;--muted:#a9a6a0;--line:rgba(255,255,255,.14);--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--lift:0 2px 6px rgba(0,0,0,.5),0 30px 60px rgba(0,0,0,.6);--note:#e8dc8a;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.35)}}
-:root[data-theme="dark"]{--table:#1f1e1c;--paper:#f7f6f2;--ink:#141414;--muted:#a9a6a0;--line:rgba(255,255,255,.14);--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--lift:0 2px 6px rgba(0,0,0,.5),0 30px 60px rgba(0,0,0,.6);--note:#e8dc8a;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.35)}
+:root{--table:#e4e2dd;--paper:#ffffff;--ink:#141414;--muted:#5d5b57;--line:rgba(0,0,0,.12);--shadow:0 1px 2px rgba(0,0,0,.12),0 8px 22px rgba(0,0,0,.10);--lift:0 2px 4px rgba(0,0,0,.12),0 26px 50px rgba(0,0,0,.22);--note:#fff3a6;--note2:#ffd9cf;--note3:#d7ecff;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--table:#1f1e1c;--paper:#f7f6f2;--ink:#141414;--muted:#a9a6a0;--line:rgba(255,255,255,.14);--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--lift:0 2px 6px rgba(0,0,0,.5),0 30px 60px rgba(0,0,0,.6);--note:#e8dc8a;--note2:#e8c3b8;--note3:#bfd6ea;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.35)}}
+:root[data-theme="dark"]{--table:#1f1e1c;--paper:#f7f6f2;--ink:#141414;--muted:#a9a6a0;--line:rgba(255,255,255,.14);--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--lift:0 2px 6px rgba(0,0,0,.5),0 30px 60px rgba(0,0,0,.6);--note:#e8dc8a;--note2:#e8c3b8;--note3:#bfd6ea;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.35)}
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--table);color:var(--ink);font:1rem/1.55 Inter,system-ui,-apple-system,"PingFang TC",sans-serif;min-height:100vh;overflow-x:hidden}
@@ -61,7 +61,24 @@ body{background:var(--table);color:var(--ink);font:1rem/1.55 Inter,system-ui,-ap
 .note::before{content:"";position:absolute;top:-9px;left:50%;width:70px;height:20px;margin-left:-35px;background:var(--tape);transform:rotate(3deg)}
 .note p{margin:0}.note .now{font-weight:700;font-size:1.35rem}.note .howto{margin-top:8px;font-size:1.05rem;opacity:.8}
 @media (min-width:900px){.js .stage:has(.deck.spread) .note{position:absolute;left:12px;top:18px;margin:0}}
-.lately{max-width:640px;margin:8px auto 0;padding:0 20px}
+.guest{max-width:760px;margin:20px auto 0;padding:0 20px}
+.guest h2{font:700 1.6rem/1 Caveat,cursive;margin:0 0 12px}
+.gnotes{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:18px}
+.gnote,.gform{background:var(--note);color:var(--note-ink);border-radius:2px;box-shadow:var(--shadow);padding:12px 14px;width:200px;min-height:120px;font:500 1.2rem/1.3 Caveat,cursive;transform:rotate(var(--t,-1.5deg));display:flex;flex-direction:column;gap:6px}
+.gnote:nth-child(3n+2){--t:2deg;background:var(--note2)}.gnote:nth-child(3n){--t:-3deg;background:var(--note3)}
+.gnote .by{margin-top:auto;font-size:1rem;opacity:.75}.gnote .wait{font-size:.95rem;opacity:.7}
+.gform{width:min(320px,100%);--t:1deg;background:var(--paper);color:#141414}
+.gform textarea,.gform input{font:500 1.2rem/1.3 Caveat,cursive;border:0;border-bottom:1.5px dashed rgba(0,0,0,.25);background:transparent;color:inherit;resize:none;padding:4px 2px;width:100%}
+.gform textarea:focus,.gform input:focus{outline:2px solid #141414;outline-offset:2px}
+.grow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gcount{font-size:.95rem;opacity:.6}
+.gform button{font:700 1.1rem/1 Caveat,cursive;padding:7px 16px;border-radius:999px;border:0;background:#141414;color:#fff;cursor:pointer}
+.gform button[disabled]{opacity:.5}
+.gmsg{margin:0;font-size:1rem;min-height:1.2em}
+.gfine{font-size:.8125rem;color:var(--muted);margin:14px 0 0}
+.hp{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.lately{max-width:640px;margin:32px auto 0;padding:0 20px}
 .lately h2{font:700 1.6rem/1 Caveat,cursive;margin:0 0 8px}
 .lately ul{list-style:none;margin:0;padding:0}
 .lately li{display:grid;grid-template-columns:4.5em 1fr;gap:12px;padding:9px 0;border-top:1.5px dashed var(--line);font-size:.9375rem}
@@ -176,6 +193,18 @@ h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
 </ul>
 </div>
 <div class="scrim" id="scrim"></div>
+<section class="guest" id="guest" aria-labelledby="guest-h" data-url="https://script.google.com/macros/s/AKfycbyXL2BKiq1sasfBu2CdUTOkhsfz4v3B0LKKO_QOwmX0T1vSRxnM1448mtomARy5uHdx/exec" hidden>
+<h2 id="guest-h">notes on the table</h2>
+<div class="gnotes" aria-live="polite"></div>
+<form class="gform" id="gform" novalidate>
+<label for="g-text" class="sr">Your note</label><textarea id="g-text" name="text" maxlength="100" rows="3" placeholder="Leave me a note…" required></textarea>
+<label for="g-name" class="sr">Your name (optional)</label><input id="g-name" name="name" maxlength="24" placeholder="your name (optional)" autocomplete="nickname">
+<input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="grow"><span class="gcount" aria-live="polite">0/100</span><button type="submit">stick it</button></div>
+<p class="gmsg" role="status"></p>
+</form>
+<p class="gfine">Notes are public, and I read each one before it goes up. Please don't write anything private.</p>
+</section>
 <section class="lately" aria-labelledby="lately-h"><h2 id="lately-h">lately</h2><ul><li><span class="k">New</span><span><a href="#boyfriend-cam">Boyfriend Cam</a>&#x27;s website is up. The app is on its way to the App Store.</span></li><li><span class="k">New</span><span><a href="#trial-toolbox">Trial Toolbox</a> is out for Mac, iPhone and iPad, in Traditional Chinese for Taiwan.</span></li><li><span class="k">New</span><span><a href="#deepstash">Deepstash</a> is on the App Store.</span></li><li><span class="k">New</span><span><a href="#shoo">Shoo! Stickers</a> is on the Mac App Store.</span></li><li><span class="k">New</span><span><a href="https://sona-orbit.github.io/chaohaoyue/">Chaohaoyue</a>&#x27;s website is up. It handles LINE booking for clinics.</span></li></ul></section>
 <footer>made by hand, one card at a time · <a href="mailto:sona.orbit.hi@gmail.com">sona.orbit.hi@gmail.com</a> · <a href="https://www.threads.com/@sona.orbit.hi">Threads</a> · <a href="https://github.com/sona-orbit">GitHub</a></footer>
 
@@ -298,6 +327,50 @@ h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
   const want = decodeURIComponent(location.hash.slice(1));      // #parroting opens that card (shareable)
   const wc = want && cards.find(c => c.dataset.id === want);
   if (wc) setTimeout(() => openCard(wc), still ? 0 : 1700);
+})();
+// Visitors' sticky notes: read the shown ones, post a new one (it shows after John reads it).
+(() => {
+  const g = document.getElementById('guest');
+  if (!g || !g.dataset.url || !window.fetch) return;
+  g.hidden = false;
+  const url = g.dataset.url, box = g.querySelector('.gnotes'), f = document.getElementById('gform');
+  const ta = f.querySelector('textarea'), nm = f.querySelector('[name=name]'), msg = f.querySelector('.gmsg'), cnt = f.querySelector('.gcount');
+  const store = { get(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (_) {} } };
+  let visitor = store.get('so-visitor');
+  if (!visitor) { visitor = Math.random().toString(36).slice(2) + Date.now().toString(36); store.set('so-visitor', visitor); }
+  let mine = []; try { mine = JSON.parse(store.get('so-mine') || '[]'); } catch (_) {}
+  const note = (n, wait) => {
+    const d = document.createElement('div'); d.className = 'gnote';
+    const p = document.createElement('p'); p.style.margin = 0; p.textContent = n.text; d.append(p);
+    const by = document.createElement('span'); by.className = wait ? 'wait' : 'by';
+    by.textContent = wait ? 'waiting for me to read it' : '— ' + (n.name || 'someone') + (n.date ? ', ' + n.date : '');
+    d.append(by); return d;
+  };
+  function render(shown) {
+    box.textContent = '';
+    const ids = new Set(shown.map(n => n.id));
+    mine = mine.filter(n => !ids.has(n.id)); store.set('so-mine', JSON.stringify(mine));
+    mine.forEach(n => box.append(note(n, true)));
+    shown.forEach(n => box.append(note(n, false)));
+  }
+  render([]);
+  fetch(url).then(r => r.json()).then(j => render(j.notes || [])).catch(() => {});
+  ta.addEventListener('input', () => { cnt.textContent = ta.value.length + '/100'; });
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const text = ta.value.trim();
+    if (!text) { msg.textContent = 'Write something first.'; ta.focus(); return; }
+    const btn = f.querySelector('button'); btn.disabled = true; msg.textContent = 'Sticking it on…';
+    fetch(url, { method: 'POST', body: JSON.stringify({ text, name: nm.value.trim(), visitor, hp: f.hp.value, lang: navigator.language }) })
+      .then(r => r.json()).then(j => {
+        if (j.ok) {
+          mine.unshift({ id: j.id, text, name: nm.value.trim() }); store.set('so-mine', JSON.stringify(mine.slice(0, 5)));
+          box.prepend(note({ text }, !j.shown)); ta.value = ''; cnt.textContent = '0/100';
+          msg.textContent = j.shown ? 'Stuck! Thank you.' : 'Stuck! It goes up for everyone after I read it.';
+        } else msg.textContent = { rate: "That's a lot of notes for one hour. Try again later.", link: "Links can't go on a note.", empty: 'Write something first.' }[j.error] || "The note didn't stick. Try again in a moment.";
+      }).catch(() => { msg.textContent = "The note didn't stick. Try again in a moment."; })
+      .finally(() => { btn.disabled = false; });
+  });
 })();
 </script>
 </body>
