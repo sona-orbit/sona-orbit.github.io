@@ -86,7 +86,9 @@ body{background:var(--table);color:var(--ink);font:1rem/1.55 Inter,system-ui,-ap
 .lately a{color:inherit;font-weight:600}
 .js .deck.spread .card.open,.js .deck.spread .card.open .back{touch-action:pan-y}
 .flipped .front{transform:rotateY(-180deg)}.flipped .back{transform:rotateY(0)}
-.me .front{display:flex;flex-direction:column;justify-content:center;padding:22px;text-align:left}
+.me .front{display:flex;flex-direction:column;justify-content:center;padding:22px;text-align:left;background:#d6d4cf}
+.back .pet{display:block;width:56%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 42%;margin:-3cqw auto 0;flex:none}
+.deck.list .back .pet{display:none}
 .me .title{font:800 italic 1.55rem/1.05 Inter,sans-serif;letter-spacing:-.02em}
 .me .sub{font:500 1.15rem/1.2 Caveat,cursive;color:#5d5b57;margin-top:10px}
 /* spread mode (JS) */
@@ -128,8 +130,9 @@ h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
 <ul class="deck list" id="deck">
 <li class="card me" data-id="me" style="--i:9">
 <button class="face front" type="button" aria-label="Sona Orbit: turn the card over"><span class="title">This is<br>Sona Orbit</span><span class="sub">9 small apps, one person</span></button>
-<div class="face back" aria-hidden="true"><p class="st">Sona Orbit</p><h2>Pick a card.</h2><p class="blurb">Each card is one app I made. Tap one to turn it over, drag it anywhere, or press shuffle.</p>
-<p class="blurb">The three cards with a pencil tag are about me.</p></div>
+<div class="face back" aria-hidden="true"><img class="pet" src="cards/me.webp" alt="Sona Orbit&#x27;s avatar: a curly black dog in round glasses and a hoodie, sitting at a laptop" width="560" height="840" loading="lazy" decoding="async">
+<p class="st">About me</p><h2>Hello.</h2><p class="blurb">I&#x27;m a digital nomad and I work alone. Design, code, the websites and the support inbox are all me. I care about where your data goes, and I fuss over small details.</p>
+<p class="cnote">Every other card is one app I made: tap to turn it over, drag it anywhere, or press shuffle.</p></div>
 </li>
 <li class="card" data-id="parroting" style="--i:0">
 <button class="face front" type="button" aria-label="Parroting: turn the card over"><img src="cards/parroting.webp" alt="" width="560" height="840" loading="eager" decoding="async"><span class="tag">Parroting</span></button>
@@ -185,17 +188,9 @@ h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
 <h2>Ear for Omi</h2><p class="blurb">A third-party iPhone app for the Omi pendant. Recordings go to a server you run and come back as topics, to-dos and memories.</p><p class="price">Taiwan only · US$139, one-time</p>
 <a class="go" href="https://sona-orbit.github.io/ear-for-omi/">Visit the site <span aria-hidden="true">→</span></a></div>
 </li>
-<li class="card mine" data-id="about" style="--i:10">
-<button class="face front" type="button" aria-label="About me: turn the card over"><img src="cards/me.webp" alt="" width="560" height="840" decoding="async"><span class="tag">about me</span></button>
-<div class="face back" aria-hidden="true"><p class="st">About me</p><h2>Hello.</h2><p class="blurb">I&#x27;m a digital nomad and I work alone. Design, code, the websites and the support inbox are all me. I care about where your data goes, and I fuss over small details.</p></div>
-</li>
-<li class="card mine" data-id="contact" style="--i:11">
-<button class="face front" type="button" aria-label="Contact: turn the card over"><img src="cards/contact.webp" alt="" width="560" height="840" decoding="async"><span class="tag">say hi</span></button>
-<div class="face back" aria-hidden="true"><p class="st">Contact</p><h2>Say hi.</h2><p class="blurb">I read and reply to every email myself.</p><p class="mail"><span>sona.orbit.hi@gmail.com</span><button type="button" class="copy" data-copy="sona.orbit.hi@gmail.com">copy</button></p><p class="links"><a href="https://www.threads.com/@sona.orbit.hi">Threads</a> · <a href="https://github.com/sona-orbit">GitHub</a></p></div>
-</li>
-<li class="card mine" data-id="work" style="--i:12">
-<button class="face front" type="button" aria-label="Commissions: turn the card over"><img src="cards/work.webp" alt="" width="560" height="840" decoding="async"><span class="tag">work with me</span></button>
-<div class="face back" aria-hidden="true"><p class="st">Commissions</p><h2>Work with me.</h2><p class="blurb">Native apps for Mac, iPhone and iPad, made by one person. I like apps that do the work on the device, and small tools for one kind of work. I take on a few projects at a time.</p><a class="go" href="mailto:sona.orbit.hi@gmail.com?subject=Project%20enquiry">Tell me about it <span aria-hidden="true">→</span></a></div>
+<li class="card mine" data-id="contact" style="--i:10">
+<button class="face front" type="button" aria-label="Contact · Commissions: turn the card over"><img src="cards/work.webp" alt="" width="560" height="840" decoding="async"><span class="tag">say hi · work with me</span></button>
+<div class="face back" aria-hidden="true"><p class="st">Contact · Commissions</p><h2>Say hi.</h2><p class="blurb">I read and reply to every email myself.</p><p class="mail"><span>sona.orbit.hi@gmail.com</span><button type="button" class="copy" data-copy="sona.orbit.hi@gmail.com">copy</button></p><p class="links"><a href="https://www.threads.com/@sona.orbit.hi">Threads</a> · <a href="https://github.com/sona-orbit">GitHub</a></p><p class="blurb">Have an app in mind? I build native apps for Mac, iPhone and iPad, and take on a few projects at a time.</p><a class="go" href="mailto:sona.orbit.hi@gmail.com?subject=Project%20enquiry">Tell me about it <span aria-hidden="true">→</span></a></div>
 </li>
 </ul>
 </div>
@@ -240,10 +235,10 @@ h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
     } else {                    // desk: a ring around "This is Sona Orbit"
       const ch = cw * 1.5, rx = Math.min(W * .44, cw * 3.1), ry = ch * 1.4;
       deck.style.setProperty('--h', (ry * 2 + ch + 40) + 'px');
-      // the cards about me: a small fan in the middle, "This is Sona Orbit" on top
-      [mine[0], mine[1], me, mine[2]].forEach((c, k) => {
-        const t = k - 1.5;
-        place(c, t * cw * .58, Math.abs(t) * 10, t * 7 + (Math.random() - .5) * 3, k);
+      // the two cards about me, side by side in the middle
+      [me, ...mine].forEach((c, k) => {
+        const t = k - (mine.length) / 2;
+        place(c, t * cw * 1.08, Math.abs(t) * 8, t * 6 + (Math.random() - .5) * 3, k);
         c.style.setProperty('--z', c === me ? 6 : 2 + k);
       });
       others.forEach((c, i) => {
@@ -319,8 +314,10 @@ h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
     const pick = () => { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
     try { navigator.clipboard.writeText(b.dataset.copy).then(done, pick); } catch (_) { pick(); }
   }));
+  const alias = { about: 'me', work: 'contact' };            // the four cards about me became two (11-16)
+  const byHash = h => { h = decodeURIComponent(h); h = alias[h] || h; return cards.find(x => x.dataset.id === h); };
   addEventListener('hashchange', () => {
-    const c = cards.find(x => x.dataset.id === decodeURIComponent(location.hash.slice(1)));
+    const c = byHash(location.hash.slice(1));
     if (!c) return;
     if (view !== 'spread') setView('spread');
     deck.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
@@ -332,7 +329,7 @@ h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => view === 'spread' && layout(false), 150); });
   setView(new URLSearchParams(location.search).get('view') === 'list' ? 'list' : 'spread');
   const want = decodeURIComponent(location.hash.slice(1));      // #parroting opens that card (shareable)
-  const wc = want && cards.find(c => c.dataset.id === want);
+  const wc = want && byHash(want);
   if (wc) setTimeout(() => openCard(wc), still ? 0 : 1700);
 })();
 // Visitors' sticky notes: read the shown ones, post a new one (it shows after John reads it).
