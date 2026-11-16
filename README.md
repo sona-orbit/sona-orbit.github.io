@@ -8,3 +8,5 @@ Root site for Sona Orbit (https://sona-orbit.github.io/).
 - `robots.txt` / `sitemap.xml` — search engine hints. The sitemap also lists the Parroting pages (served from the `sona-orbit/parroting` repo under `/parroting/`); update it when Parroting adds or removes public pages. English pages under `/parroting/en/` are `noindex` for now and are left out.
 
 All site content and commit messages are in English.
+
+- Published by Sona Orbit. Issues and pull requests are turned off.
