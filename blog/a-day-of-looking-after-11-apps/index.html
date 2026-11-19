@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="text-scale" content="scale">
+<meta name="theme-color" content="#e4e2dd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1f1e1c" media="(prefers-color-scheme: dark)">
+<script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script>
+<title>A day of looking after 11 apps, alone — Sona Orbit</title>
+<meta name="description" content="A work diary from a one-person app studio: a day with no new features, 10 projects backed up, 9 versions waiting for App Review and 37 keyword sets rewritten.">
+<link rel="canonical" href="https://sona-orbit.github.io/blog/a-day-of-looking-after-11-apps/">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Sona Orbit">
+<meta property="og:title" content="A day of looking after 11 apps, alone"><meta property="og:description" content="A work diary from a one-person app studio: a day with no new features, 10 projects backed up, 9 versions waiting for App Review and 37 keyword sets rewritten."><meta property="og:url" content="https://sona-orbit.github.io/blog/a-day-of-looking-after-11-apps/">
+<meta property="og:image" content="https://sona-orbit.github.io/blog/a-day-of-looking-after-11-apps/01-desk.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@SonaOrbit">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A day of looking after 11 apps, alone", "description": "A work diary from a one-person app studio: a day with no new features, 10 projects backed up, 9 versions waiting for App Review and 37 keyword sets rewritten.", "datePublished": "2026-11-16T16:48:58+08:00", "dateModified": "2026-11-16T16:48:58+08:00", "inLanguage": "en", "image": "https://sona-orbit.github.io/blog/a-day-of-looking-after-11-apps/01-desk.jpg", "mainEntityOfPage": "https://sona-orbit.github.io/blog/a-day-of-looking-after-11-apps/", "author": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "publisher": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "isPartOf": {"@id": "https://sona-orbit.github.io/blog/#blog"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%226%22 y=%223%22 width=%2220%22 height=%2226%22 rx=%222%22 fill=%22white%22 stroke=%22black%22 stroke-width=%222%22 transform=%22rotate(-8 16 16)%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--table:#e4e2dd;--paper:#ffffff;--ink:#141414;--muted:#5d5b57;--on-table:#141414;--on-table-muted:#5d5b57;--line:rgba(0,0,0,.14);--shadow:0 1px 2px rgba(0,0,0,.12),0 8px 22px rgba(0,0,0,.10);--note:#fff3a6;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}}
+:root[data-theme="dark"]{--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--table);color:var(--on-table);font:1rem/1.65 Inter,system-ui,-apple-system,"PingFang TC",sans-serif;min-height:100vh}
+a{color:inherit}
+.top{display:flex;align-items:baseline;gap:14px;padding:18px 20px;max-width:1120px;margin:0 auto}
+.brand{font:700 1.75rem/1 Caveat,cursive;margin:0;text-decoration:none}
+.top .where{font:500 1.25rem/1 Caveat,cursive;color:var(--on-table-muted);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 20px 56px;display:grid;gap:28px}
+.paper{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);border-radius:3px;padding:28px 22px 34px;position:relative;min-width:0}
+.paper::before{content:"";position:absolute;top:-10px;left:50%;width:92px;height:22px;margin-left:-46px;background:var(--tape);transform:rotate(-2deg);box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.paper h1{font:700 clamp(2rem,1.3rem + 2.6vw,3rem)/1.08 Caveat,cursive;margin:0 0 6px;text-wrap:balance}
+.paper .when{font:500 1.2rem/1.2 Caveat,cursive;color:var(--muted);margin:0 0 18px}
+.paper h2{font:700 1.75rem/1.15 Caveat,cursive;margin:34px 0 8px;text-wrap:balance}
+.paper p{margin:0 0 14px;max-width:66ch}
+.prose ul{margin:0 0 16px;padding:0;list-style:none;max-width:66ch}
+.prose li{padding:8px 0 8px 22px;border-top:1.5px dashed var(--line);position:relative}
+.prose li:last-child{border-bottom:1.5px dashed var(--line)}
+.prose li::before{content:"";position:absolute;left:4px;top:1.05em;width:7px;height:7px;border:1.5px solid var(--ink);border-radius:50%}
+.paper figure{margin:18px -6px 20px}
+.paper img{display:block;width:100%;height:auto;border-radius:2px;border:1.5px solid var(--line)}
+.paper .src{margin-top:26px;font-size:.9375rem;color:var(--muted)}
+.side{align-self:start}
+.side .note{background:var(--note);color:var(--note-ink);padding:14px 16px 12px;border-radius:2px;box-shadow:var(--shadow);transform:rotate(-1.5deg);font:500 1.2rem/1.3 Caveat,cursive;max-width:280px}
+.side .note p{margin:0}.side .note .b{font-weight:700;font-size:1.35rem}
+.side h2{font:700 1.5rem/1 Caveat,cursive;margin:26px 0 6px}
+.side ol{list-style:none;margin:0;padding:0}
+.side li{padding:9px 0;border-top:1.5px dashed var(--line);font-size:.9375rem}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .side li{border-top-color:rgba(255,255,255,.16)}}
+.side li a{font-weight:600;text-decoration:none}
+.side li a:hover,.side li a:focus-visible{text-decoration:underline}
+.side li a[aria-current]{text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px}
+.side time{display:block;font:500 1.05rem/1.3 Caveat,cursive;color:var(--on-table-muted)}
+.entries{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.entry{display:grid;gap:14px}
+.entry a.pic{display:block}
+.entry h2{margin:0 0 4px;font:700 1.9rem/1.1 Caveat,cursive}
+.entry h2 a{text-decoration:none}
+.entry h2 a:hover,.entry h2 a:focus-visible{text-decoration:underline}
+.entry .when{margin:0 0 8px}
+.entry p{margin:0}
+footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;color:var(--on-table-muted)}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (min-width:920px){
+  .wrap{grid-template-columns:260px minmax(0,1fr);gap:44px;padding-top:18px}
+  .side{position:sticky;top:24px;order:-1}
+  .paper{padding:44px 56px 52px}
+  .paper figure{margin:22px -20px 26px}
+  .entry{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px;align-items:center}
+}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="/">Sona Orbit</a><a class="where" href="/blog/">work diary</a></header>
+<div class="wrap">
+<main><article class="paper prose"><h1>A day of looking after 11 apps, alone</h1><p class="when"><time datetime="2026-11-16T16:48:58+08:00">November 16, 2026</time> · Sona Orbit</p>
+<figure><img src="01-desk.webp" alt="Eleven small animal mascots sit in a row on a desk at night, next to a person working on a laptop." width="1280" height="853" fetchpriority="high" decoding="async"></figure>
+<p>I&#x27;m Sona Orbit, a one-person app studio. I have 11 apps right now.</p>
+<p>I shipped no new features today. This is what I did.</p>
+<h2>Morning: making sure nothing can vanish</h2>
+<p>I checked where the source code lives and found two apps that existed only on my laptop. No remote, no backup. One dead disk and they were gone.</p>
+<p>So I pushed 10 projects to private repos and checked each one had really arrived. None of the apps got better. I&#x27;ll sleep better.</p>
+<h2>Noon: nine in the queue</h2>
+<figure><img src="02-queue.webp" alt="Nine small animals wait in line with parcels in front of a closed service window. Two more sit on a bench, already done." width="1280" height="853" loading="lazy" decoding="async"></figure>
+<p>Nine of the 11 have a version waiting for App Review.</p>
+<p>While a version waits, its name, subtitle and keywords are locked. There is nothing to do except wait. I used to think the hard part of many apps was switching between them. Today the usual state was that each one is stuck somewhere I can&#x27;t push.</p>
+<h2>Afternoon: why nobody finds them</h2>
+<figure><img src="03-labels.webp" alt="A cabinet of small drawers with paper labels, most of them only half filled in. A parrot on a stool is writing on one." width="1280" height="853" loading="lazy" decoding="async"></figure>
+<p>I looked at a kana-learning app made by a developer in Taiwan. He says it has no website and no marketing, and every user comes from App Store search. It has more than 43,000 ratings in Taiwan.</p>
+<p>My five live apps have three ratings in Taiwan, in total.</p>
+<p>So I pulled the store listing of all 11 apps and then ran the searches myself:</p>
+<ul><li>Search for the app&#x27;s own name: found, every time.</li><li>&quot;voice input&quot; in Chinese: Parroting is at 128.</li><li>&quot;translate&quot; in Chinese: Konjac Translate is at 88.</li><li>&quot;yoga&quot; in Chinese: Yoga Glow is not in the first 200.</li></ul>
+<p>Part of the reason is embarrassing. The keyword field holds 100 characters. My Chinese listings used 44 to 73. Six of the apps have a name that is only the brand, and nobody searches for a brand they have never heard of.</p>
+<p>I spent the afternoon rewriting the keywords for every app in every language. Then I remembered the queue. Nine are locked. Two could be saved into a draft of the next version. The rest wait.</p>
+<h2>Evening: how other people post</h2>
+<p>I read recent posts from a few indie developers on X and wrote down the view counts. For the same person, &quot;here&#x27;s what&#x27;s new in this version&quot; was usually the lowest. A short demo, a small tip, a number or a story did better.</p>
+<p>So I didn&#x27;t write about what my apps can do. I wrote this.</p>
+<h2>Today&#x27;s tally</h2>
+<ul><li>New features: 0</li><li>Projects backed up: 10</li><li>Versions waiting for review: 9</li><li>Keyword sets rewritten: 37</li><li>Live in the store: 0, until review passes</li></ul>
+<p>Tomorrow I wait some more.</p>
+<p class="src">This first went out as a thread on X: <a href="https://x.com/SonaOrbit/status/2122250561596920146">@SonaOrbit</a>.</p></article></main>
+<aside class="side" aria-label="About this diary"><div class="note"><p class="b">Work diary</p><p>One person, a dozen small apps. I write down what I actually did and the numbers.</p></div><h2>entries</h2><ol><li><time datetime="2026-11-19">November 19, 2026</time><a href="/blog/after-app-review/">Nine apps were waiting for App Review. Here is what happened.</a></li><li><time datetime="2026-11-16">November 16, 2026</time><a href="/blog/a-day-of-looking-after-11-apps/" aria-current="page">A day of looking after 11 apps, alone</a></li></ol></aside>
+</div>
+<footer>made by hand, one card at a time · <a href="/">all the apps</a> · <a href="https://x.com/SonaOrbit">X</a> · <a href="mailto:sona.orbit.hi@gmail.com">sona.orbit.hi@gmail.com</a></footer>
+</body>
+</html>

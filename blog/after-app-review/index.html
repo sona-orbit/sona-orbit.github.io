@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="text-scale" content="scale">
+<meta name="theme-color" content="#e4e2dd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1f1e1c" media="(prefers-color-scheme: dark)">
+<script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script>
+<title>Nine apps were waiting for App Review. Here is what happened. — Sona Orbit</title>
+<meta name="description" content="A work diary from a one-person app studio: live apps went from 5 to 9, one Mac version was rejected, Google indexed 134 of 499 pages, and I built a twelfth app that only I use.">
+<link rel="canonical" href="https://sona-orbit.github.io/blog/after-app-review/">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Sona Orbit">
+<meta property="og:title" content="Nine apps were waiting for App Review. Here is what happened."><meta property="og:description" content="A work diary from a one-person app studio: live apps went from 5 to 9, one Mac version was rejected, Google indexed 134 of 499 pages, and I built a twelfth app that only I use."><meta property="og:url" content="https://sona-orbit.github.io/blog/after-app-review/">
+<meta property="og:image" content="https://sona-orbit.github.io/blog/after-app-review/01-window.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@SonaOrbit">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Nine apps were waiting for App Review. Here is what happened.", "description": "A work diary from a one-person app studio: live apps went from 5 to 9, one Mac version was rejected, Google indexed 134 of 499 pages, and I built a twelfth app that only I use.", "datePublished": "2026-11-19T23:52:30+08:00", "dateModified": "2026-11-19T23:52:30+08:00", "inLanguage": "en", "image": "https://sona-orbit.github.io/blog/after-app-review/01-window.jpg", "mainEntityOfPage": "https://sona-orbit.github.io/blog/after-app-review/", "author": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "publisher": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "isPartOf": {"@id": "https://sona-orbit.github.io/blog/#blog"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%226%22 y=%223%22 width=%2220%22 height=%2226%22 rx=%222%22 fill=%22white%22 stroke=%22black%22 stroke-width=%222%22 transform=%22rotate(-8 16 16)%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--table:#e4e2dd;--paper:#ffffff;--ink:#141414;--muted:#5d5b57;--on-table:#141414;--on-table-muted:#5d5b57;--line:rgba(0,0,0,.14);--shadow:0 1px 2px rgba(0,0,0,.12),0 8px 22px rgba(0,0,0,.10);--note:#fff3a6;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}}
+:root[data-theme="dark"]{--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--table);color:var(--on-table);font:1rem/1.65 Inter,system-ui,-apple-system,"PingFang TC",sans-serif;min-height:100vh}
+a{color:inherit}
+.top{display:flex;align-items:baseline;gap:14px;padding:18px 20px;max-width:1120px;margin:0 auto}
+.brand{font:700 1.75rem/1 Caveat,cursive;margin:0;text-decoration:none}
+.top .where{font:500 1.25rem/1 Caveat,cursive;color:var(--on-table-muted);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 20px 56px;display:grid;gap:28px}
+.paper{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);border-radius:3px;padding:28px 22px 34px;position:relative;min-width:0}
+.paper::before{content:"";position:absolute;top:-10px;left:50%;width:92px;height:22px;margin-left:-46px;background:var(--tape);transform:rotate(-2deg);box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.paper h1{font:700 clamp(2rem,1.3rem + 2.6vw,3rem)/1.08 Caveat,cursive;margin:0 0 6px;text-wrap:balance}
+.paper .when{font:500 1.2rem/1.2 Caveat,cursive;color:var(--muted);margin:0 0 18px}
+.paper h2{font:700 1.75rem/1.15 Caveat,cursive;margin:34px 0 8px;text-wrap:balance}
+.paper p{margin:0 0 14px;max-width:66ch}
+.prose ul{margin:0 0 16px;padding:0;list-style:none;max-width:66ch}
+.prose li{padding:8px 0 8px 22px;border-top:1.5px dashed var(--line);position:relative}
+.prose li:last-child{border-bottom:1.5px dashed var(--line)}
+.prose li::before{content:"";position:absolute;left:4px;top:1.05em;width:7px;height:7px;border:1.5px solid var(--ink);border-radius:50%}
+.paper figure{margin:18px -6px 20px}
+.paper img{display:block;width:100%;height:auto;border-radius:2px;border:1.5px solid var(--line)}
+.paper .src{margin-top:26px;font-size:.9375rem;color:var(--muted)}
+.side{align-self:start}
+.side .note{background:var(--note);color:var(--note-ink);padding:14px 16px 12px;border-radius:2px;box-shadow:var(--shadow);transform:rotate(-1.5deg);font:500 1.2rem/1.3 Caveat,cursive;max-width:280px}
+.side .note p{margin:0}.side .note .b{font-weight:700;font-size:1.35rem}
+.side h2{font:700 1.5rem/1 Caveat,cursive;margin:26px 0 6px}
+.side ol{list-style:none;margin:0;padding:0}
+.side li{padding:9px 0;border-top:1.5px dashed var(--line);font-size:.9375rem}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .side li{border-top-color:rgba(255,255,255,.16)}}
+.side li a{font-weight:600;text-decoration:none}
+.side li a:hover,.side li a:focus-visible{text-decoration:underline}
+.side li a[aria-current]{text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px}
+.side time{display:block;font:500 1.05rem/1.3 Caveat,cursive;color:var(--on-table-muted)}
+.entries{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.entry{display:grid;gap:14px}
+.entry a.pic{display:block}
+.entry h2{margin:0 0 4px;font:700 1.9rem/1.1 Caveat,cursive}
+.entry h2 a{text-decoration:none}
+.entry h2 a:hover,.entry h2 a:focus-visible{text-decoration:underline}
+.entry .when{margin:0 0 8px}
+.entry p{margin:0}
+footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;color:var(--on-table-muted)}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (min-width:920px){
+  .wrap{grid-template-columns:260px minmax(0,1fr);gap:44px;padding-top:18px}
+  .side{position:sticky;top:24px;order:-1}
+  .paper{padding:44px 56px 52px}
+  .paper figure{margin:22px -20px 26px}
+  .entry{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px;align-items:center}
+}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="/">Sona Orbit</a><a class="where" href="/blog/">work diary</a></header>
+<div class="wrap">
+<main><article class="paper prose"><h1>Nine apps were waiting for App Review. Here is what happened.</h1><p class="when"><time datetime="2026-11-19T23:52:30+08:00">November 19, 2026</time> · Sona Orbit</p>
+<figure><img src="01-window.webp" alt="A service window with its shutter up. Nine small animals walk away with stamped parcels, three still wait in line, and one owl walks back with a parcel that was returned." width="1280" height="853" fetchpriority="high" decoding="async"></figure>
+<p>On Monday I wrote that 9 of my 11 apps had a version waiting for App Review. The results came in over the week. Here is what happened next.</p>
+<h2>Review: five live apps became nine</h2>
+<p>On Monday five of my apps were in the store. Today nine are.</p>
+<p>One was rejected: the Mac version of an app that is already live on iPhone. The reason given was &quot;4.3 Design: Spam&quot;. I replied with an explanation. Three days, no answer.</p>
+<p>Three versions are still waiting.</p>
+<h2>Search: one rank moved</h2>
+<p>On Monday Parroting was at 128 for &quot;voice input&quot; in Chinese. It is at 96 now.</p>
+<p>For &quot;translate&quot; and &quot;yoga&quot; I&#x27;m still not in the first 180 results.</p>
+<p>Some of the keywords I rewrote on Monday only go live with the next version of each app, so these ranks don&#x27;t count yet.</p>
+<h2>Google: 66 pages, then 134</h2>
+<p>My sites add up to 499 pages. On Monday Google had indexed 66 of them. Today it&#x27;s 134.</p>
+<p>The sitemaps showed &quot;Couldn&#x27;t fetch&quot; for five days. I found nothing wrong with the files. All I could do was resubmit every one and wait.</p>
+<h2>App number 12</h2>
+<p>What I did most this week was try to remember where each app was stuck. Which ones are still in review? Did I answer that rejection? Which keywords are live?</p>
+<p>So I built app number 12. It has one user. Every hour it checks the store, Google and my own sites, and lists the places where they disagree.</p>
+<p>On day one it listed 8 items.</p>
+<h2>This week&#x27;s tally</h2>
+<ul><li>Live apps: 5 → 9</li><li>Rejected: 1</li><li>Still in review: 3</li><li>Pages indexed by Google: 66 → 134</li><li>New apps built: 1</li><li>Users of that app: 1</li></ul>
+<p>I keep waiting.</p>
+<p class="src">This first went out as a thread on X: <a href="https://x.com/SonaOrbit/status/2123444314533765354">@SonaOrbit</a>.</p></article></main>
+<aside class="side" aria-label="About this diary"><div class="note"><p class="b">Work diary</p><p>One person, a dozen small apps. I write down what I actually did and the numbers.</p></div><h2>entries</h2><ol><li><time datetime="2026-11-19">November 19, 2026</time><a href="/blog/after-app-review/" aria-current="page">Nine apps were waiting for App Review. Here is what happened.</a></li><li><time datetime="2026-11-16">November 16, 2026</time><a href="/blog/a-day-of-looking-after-11-apps/">A day of looking after 11 apps, alone</a></li></ol></aside>
+</div>
+<footer>made by hand, one card at a time · <a href="/">all the apps</a> · <a href="https://x.com/SonaOrbit">X</a> · <a href="mailto:sona.orbit.hi@gmail.com">sona.orbit.hi@gmail.com</a></footer>
+</body>
+</html>
