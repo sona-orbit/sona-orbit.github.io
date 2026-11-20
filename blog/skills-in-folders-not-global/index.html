@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="text-scale" content="scale">
+<meta name="theme-color" content="#e4e2dd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1f1e1c" media="(prefers-color-scheme: dark)">
+<script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script>
+<title>技能不放全域：用資料夾組織 AI agent 的技能 — Sona Orbit</title>
+<meta name="description" content="同時用 Claude Code、Codex、Antigravity、DeepSeek 等多種 AI agent 時，技能和規則怎麼放：全域只放指標、用專案資料夾區分工作類型、通用技能集中按需讀取、做完寫紀錄。">
+<link rel="canonical" href="https://sona-orbit.github.io/blog/skills-in-folders-not-global/">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Sona Orbit">
+<meta property="og:title" content="技能不放全域：用資料夾組織 AI agent 的技能"><meta property="og:description" content="同時用 Claude Code、Codex、Antigravity、DeepSeek 等多種 AI agent 時，技能和規則怎麼放：全域只放指標、用專案資料夾區分工作類型、通用技能集中按需讀取、做完寫紀錄。"><meta property="og:url" content="https://sona-orbit.github.io/blog/skills-in-folders-not-global/">
+<meta property="og:image" content="https://sona-orbit.github.io/blog/skills-in-folders-not-global/01-cover.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@SonaOrbit">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "技能不放全域：用資料夾組織 AI agent 的技能", "description": "同時用 Claude Code、Codex、Antigravity、DeepSeek 等多種 AI agent 時，技能和規則怎麼放：全域只放指標、用專案資料夾區分工作類型、通用技能集中按需讀取、做完寫紀錄。", "datePublished": "2026-11-20T15:40:00+08:00", "dateModified": "2026-11-20T15:40:00+08:00", "inLanguage": "zh-Hant", "image": "https://sona-orbit.github.io/blog/skills-in-folders-not-global/01-cover.jpg", "mainEntityOfPage": "https://sona-orbit.github.io/blog/skills-in-folders-not-global/", "author": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "publisher": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "isPartOf": {"@id": "https://sona-orbit.github.io/blog/#blog"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%226%22 y=%223%22 width=%2220%22 height=%2226%22 rx=%222%22 fill=%22white%22 stroke=%22black%22 stroke-width=%222%22 transform=%22rotate(-8 16 16)%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;600&family=Noto+Serif+TC:wght@600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--table:#e4e2dd;--paper:#ffffff;--ink:#141414;--muted:#5d5b57;--on-table:#141414;--on-table-muted:#5d5b57;--line:rgba(0,0,0,.14);--shadow:0 1px 2px rgba(0,0,0,.12),0 8px 22px rgba(0,0,0,.10);--note:#fff3a6;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}}
+:root[data-theme="dark"]{--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--table);color:var(--on-table);font:1rem/1.65 Inter,system-ui,-apple-system,"PingFang TC",sans-serif;min-height:100vh}
+a{color:inherit}
+.top{display:flex;align-items:baseline;gap:14px;padding:18px 20px;max-width:1120px;margin:0 auto}
+.brand{font:700 1.75rem/1 Caveat,cursive;margin:0;text-decoration:none}
+.top .where{font:500 1.25rem/1 Caveat,cursive;color:var(--on-table-muted);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 20px 56px;display:grid;gap:28px}
+.paper{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);border-radius:3px;padding:28px 22px 34px;position:relative;min-width:0}
+.paper::before{content:"";position:absolute;top:-10px;left:50%;width:92px;height:22px;margin-left:-46px;background:var(--tape);transform:rotate(-2deg);box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.paper h1{font:700 clamp(2rem,1.3rem + 2.6vw,3rem)/1.08 Caveat,cursive;margin:0 0 6px;text-wrap:balance}
+.paper .when{font:500 1.2rem/1.2 Caveat,cursive;color:var(--muted);margin:0 0 18px}
+.paper h2{font:700 1.75rem/1.15 Caveat,cursive;margin:34px 0 8px;text-wrap:balance}
+.paper p{margin:0 0 14px;max-width:66ch}
+.prose ul{margin:0 0 16px;padding:0;list-style:none;max-width:66ch}
+.prose li{padding:8px 0 8px 22px;border-top:1.5px dashed var(--line);position:relative}
+.prose li:last-child{border-bottom:1.5px dashed var(--line)}
+.prose li::before{content:"";position:absolute;left:4px;top:1.05em;width:7px;height:7px;border:1.5px solid var(--ink);border-radius:50%}
+.paper figure{margin:18px -6px 20px}
+.paper img{display:block;width:100%;height:auto;border-radius:2px;border:1.5px solid var(--line)}
+.paper .src{margin-top:26px;font-size:.9375rem;color:var(--muted)}
+.side{align-self:start}
+.side .note{background:var(--note);color:var(--note-ink);padding:14px 16px 12px;border-radius:2px;box-shadow:var(--shadow);transform:rotate(-1.5deg);font:500 1.2rem/1.3 Caveat,cursive;max-width:280px}
+.side .note p{margin:0}.side .note .b{font-weight:700;font-size:1.35rem}
+.side h2{font:700 1.5rem/1 Caveat,cursive;margin:26px 0 6px}
+.side ol{list-style:none;margin:0;padding:0}
+.side li{padding:9px 0;border-top:1.5px dashed var(--line);font-size:.9375rem}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .side li{border-top-color:rgba(255,255,255,.16)}}
+.side li a{font-weight:600;text-decoration:none}
+.side li a:hover,.side li a:focus-visible{text-decoration:underline}
+.side li a[aria-current]{text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px}
+.side time{display:block;font:500 1.05rem/1.3 Caveat,cursive;color:var(--on-table-muted)}
+.entries{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.entry{display:grid;gap:14px}
+.entry a.pic{display:block}
+.entry h2{margin:0 0 4px;font:700 1.9rem/1.1 Caveat,cursive}
+.entry h2 a{text-decoration:none}
+.entry h2 a:hover,.entry h2 a:focus-visible{text-decoration:underline}
+.entry .when{margin:0 0 8px}
+.entry p{margin:0}
+footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;color:var(--on-table-muted)}
+/* 中文文章（lang: zh-Hant）：Caveat 沒有中文字，標題改用 Noto Serif TC */
+.prose{--soft:#f4f2ee;--zh-hand:"Noto Serif TC","Songti TC",serif;--sans:Inter,system-ui,-apple-system,"PingFang TC",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+.prose.zh{line-height:1.85}
+.prose.zh h1{font:700 clamp(1.75rem,1.3rem + 1.8vw,2.5rem)/1.35 var(--zh-hand);margin:0 0 10px}
+.prose.zh h2{font:700 clamp(1.375rem,1.2rem + .8vw,1.7rem)/1.45 var(--zh-hand);margin:36px 0 10px}
+.prose.zh p,.prose.zh li{text-wrap:pretty}
+.entry h2 a.zh{font:700 1.45rem/1.35 "Noto Serif TC","Songti TC",serif}
+.prose strong{font-weight:600;background:linear-gradient(transparent 62%,var(--note) 62%)}
+.prose code{font-family:var(--mono);font-size:.82em;background:var(--soft);padding:.1em .38em;border-radius:3px;overflow-wrap:anywhere}
+.prose pre{background:var(--soft);border-radius:3px;padding:14px 16px;overflow-x:auto;font-size:.84rem;line-height:1.6;margin:0 0 16px}
+.prose pre code{background:none;padding:0;font-size:inherit;overflow-wrap:normal}
+.prose ol{margin:0 0 16px;padding-left:1.5em;max-width:66ch}
+.prose ol li{padding:4px 0 4px 4px}
+.prose .tbl{overflow-x:auto;margin:0 0 18px}
+.prose table{border-collapse:collapse;width:100%;font-size:.9375rem;line-height:1.6}
+.prose th,.prose td{text-align:left;padding:9px 10px;border-bottom:1.5px dashed var(--line);vertical-align:top}
+.prose th{font:700 .9375rem/1.4 var(--zh-hand);border-bottom:1.5px solid var(--ink)}
+.prose tr:last-child td{border-bottom:0}
+/* 內嵌 SVG 架構圖：白紙上的墨線，共用技能庫用便條黃 */
+.prose figure.diagram{margin:22px 0 24px}
+.prose figure.diagram .sv{overflow-x:auto}
+.prose figure.diagram svg{width:100%;height:auto;display:block}
+.prose figure.diagram figcaption{font-size:.875rem;color:var(--muted);margin-top:10px;line-height:1.65}
+@media (max-width:760px){.prose figure.diagram svg{min-width:720px}.prose figure.diagram::before{content:"← swipe to see the whole diagram →";display:block;font-size:.75rem;color:var(--muted);margin-bottom:6px}}
+.prose .diagram .z-global{fill:var(--soft);stroke:var(--ink);stroke-width:1.3}
+.prose .diagram .z-folder{fill:#fff;stroke:var(--ink);stroke-width:1.3}
+.prose .diagram .z-folder2{fill:#fff;stroke:var(--ink);stroke-width:1.3;stroke-dasharray:6 4}
+.prose .diagram .z-brain{fill:var(--note);stroke:var(--ink);stroke-width:1.6}
+.prose .diagram .z-log{fill:#fff;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:2 3}
+.prose .diagram .ag{fill:var(--ink)}
+.prose .diagram text{font-family:var(--sans);fill:var(--ink)}
+.prose .diagram .agt{font-size:12.5px;font-weight:600;text-anchor:middle;fill:#fff}
+.prose .diagram .lbl{font:700 15px var(--zh-hand)}
+.prose .diagram .fs{font-size:12.5px;fill:var(--muted)}
+.prose .diagram .mono{font-family:var(--mono);font-size:12px;text-anchor:middle}
+.prose .diagram .mono-l{font-family:var(--mono);font-size:12px}
+.prose .diagram .step{font:700 20px Caveat,cursive;fill:var(--muted)}
+.prose .diagram .mid{text-anchor:middle}
+.prose .diagram .ar{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-dasharray:5 4}
+.prose .diagram .arl{stroke:var(--ink);stroke-width:1.6;fill:none}
+.prose .diagram .ah,.prose .diagram .ahl{fill:var(--ink)}
+.prose .diagram .eq{stroke:var(--muted);stroke-width:1.3;fill:none}
+.prose .diagram .eqt{font-size:11.5px;fill:var(--muted);text-anchor:middle}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (min-width:920px){
+  .wrap{grid-template-columns:260px minmax(0,1fr);gap:44px;padding-top:18px}
+  .side{position:sticky;top:24px;order:-1}
+  .paper{padding:44px 56px 52px}
+  .paper figure{margin:22px -20px 26px}
+  .entry{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px;align-items:center}
+}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="/">Sona Orbit</a><a class="where" href="/blog/">work diary</a></header>
+<div class="wrap">
+<main><article class="paper prose zh" lang="zh-Hant"><h1>技能不放全域：用資料夾組織 AI agent 的技能</h1><p class="when"><time datetime="2026-11-20T15:40:00+08:00">November 20, 2026</time> · Sona Orbit</p>
+<figure><img src="01-cover.webp" alt="幾個資料夾各自連到中央的共用技能庫，右下角是工作紀錄卡" width="1280" height="720" fetchpriority="high" decoding="async"></figure>
+<h2>為什麼要這樣設計</h2>
+<p>只用一個 agent、只做一類工作時，把規則寫進全域設定檔就夠了。工作類型和 agent 一多，這個做法就會出問題：</p>
+<ul><li>一份全域檔要同時管 App 送審、影片製作、後端部署，agent 每次開工都要讀完一整份，裡面大部分和這次的工作無關。</li><li>Claude Code 讀得到的技能，Codex 讀不到；同一份規則複製到好幾處，其中一份很快就會過時。</li><li>上一個 agent 做到哪裡，下一個 agent 不知道，只能重新問一遍。</li></ul>
+<p>所以這套設計要達成三個目標：<strong>agent 只拿到這次工作需要的規則</strong>、<strong>不同家的 agent 讀到同一份規則</strong>、<strong>做完的工作接得上</strong>。對應的做法是：用資料夾區分工作類型、把通用技能集中在一處按需讀取、做完寫紀錄。全域設定檔只剩下指標。</p>
+<p>具體分成三層：</p>
+<ol><li><strong>全域只放指標</strong>。每個 agent 的全域設定檔保持很短，只寫去哪裡找規則、做完要寫紀錄，以及所有工作都要守的幾條底線。</li><li><strong>工作類型用專案資料夾區分</strong>。每類工作的守則和專屬技能放在它自己的資料夾。agent 進到哪個資料夾，就拿到那類工作的規則。</li><li><strong>通用技能集中放在共用技能庫</strong>，用到時才讀。各家 agent 讀的都是同一份。</li></ol>
+<p>此外還有一條貫穿三層的規則：<strong>做完一定寫紀錄</strong>，下一次或下一個 agent 才接得上。</p>
+<h2>一、為什麼不全部放在全域</h2>
+<p>把所有技能放進全域，看起來最省事，實際用下來會遇到四個問題：</p>
+<ul><li><strong>規則混在一起</strong>。送審規則、影片製作流程、後端的技術限制全寫在同一份檔案裡，改字幕時 agent 也得讀一遍送審規則。</li><li><strong>容易誤觸發</strong>。技能靠描述觸發。全域技能一多，描述就會互相重疊，「整理一下」可能叫出做報表的技能。</li><li><strong>佔 context</strong>。全域的內容每段對話一開始都會載入。和這次工作無關的內容越多，留給程式碼和文件的空間就越少。</li><li><strong>不同 agent 讀不到同一份</strong>。Claude Code、Codex、Antigravity、DeepSeek harness 各讀各的位置。要大家都讀到，就得複製好幾份，其中一份很快就會過時。</li></ul>
+<h2>二、三層結構</h2>
+<figure class="diagram" aria-label="各 agent 在三層各讀哪個檔，以及共用技能庫與工作紀錄">
+<div class="sv"><svg viewBox="0 0 720 380" role="img">
+  <title>三層結構：各 agent 讀哪個檔</title>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ah"/></marker>
+    <marker id="ahl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ahl"/></marker>
+  </defs>
+  <!-- agent 欄標題 -->
+  <g>
+    <rect x="120" y="14" width="140" height="36" rx="18" class="ag"/><text x="190" y="37" class="agt">Claude Code</text>
+    <rect x="270" y="14" width="140" height="36" rx="18" class="ag"/><text x="340" y="37" class="agt">Codex</text>
+    <rect x="420" y="14" width="140" height="36" rx="18" class="ag"/><text x="490" y="37" class="agt">Antigravity</text>
+    <rect x="570" y="14" width="140" height="36" rx="18" class="ag"/><text x="640" y="37" class="agt">DeepSeek harness</text>
+  </g>
+  <!-- 全域 -->
+  <rect x="10" y="62" width="700" height="50" rx="10" class="z-global"/>
+  <text x="20" y="84" class="lbl">全域</text><text x="20" y="102" class="fs">只放指標</text>
+  <text x="190" y="92" class="mono">~/.claude/CLAUDE.md</text>
+  <text x="340" y="92" class="mono">~/.codex/AGENTS.md</text>
+  <text x="490" y="92" class="mono">工具的全域設定</text>
+  <text x="640" y="92" class="mono">harness home</text>
+  <!-- 專案規則 -->
+  <rect x="10" y="122" width="700" height="50" rx="10" class="z-folder"/>
+  <text x="20" y="144" class="lbl lbl-folder">專案資料夾</text><text x="20" y="162" class="fs">這類工作的守則</text>
+  <text x="190" y="152" class="mono">./CLAUDE.md</text>
+  <text x="340" y="152" class="mono">./AGENTS.md</text>
+  <text x="490" y="152" class="mono">專案規則檔</text>
+  <text x="640" y="152" class="mono">專案規則檔</text>
+  <path d="M232 147 H298" class="eq"/><text x="265" y="140" class="eqt">內容相同</text>
+  <!-- 專屬技能 -->
+  <rect x="10" y="182" width="700" height="50" rx="10" class="z-folder2"/>
+  <text x="20" y="204" class="lbl lbl-folder">專屬技能</text><text x="20" y="222" class="fs">只在這裡觸發</text>
+  <text x="190" y="212" class="mono">.claude/skills/</text>
+  <text x="340" y="212" class="mono">.agents/skills/</text>
+  <text x="490" y="212" class="mono">…/skills/</text>
+  <text x="640" y="212" class="mono">home/skills/</text>
+  <!-- 按需讀取的箭頭 -->
+  <path d="M190 236 V284" class="ar" marker-end="url(#ah)"/>
+  <path d="M340 236 V284" class="ar" marker-end="url(#ah)"/>
+  <path d="M490 236 V284" class="ar" marker-end="url(#ah)"/>
+  <path d="M640 236 V284" class="arl" marker-end="url(#ahl)"/>
+  <text x="196" y="264" class="fs">按需讀取</text>
+  <text x="646" y="264" class="fs lbl-log">做完寫入</text>
+  <!-- 共用技能庫 + 紀錄 -->
+  <rect x="10" y="290" width="550" height="76" rx="12" class="z-brain"/>
+  <text x="20" y="314" class="lbl lbl-brain">共用技能庫</text>
+  <text x="20" y="334" class="fs">HTTP 或 Git，每個 agent 都拿得到</text>
+  <text x="20" y="354" class="fs">索引 → 入口 → 子規格，只讀需要的那篇</text>
+  <rect x="570" y="290" width="140" height="76" rx="12" class="z-log"/>
+  <text x="582" y="314" class="lbl lbl-log">工作紀錄</text>
+  <text x="582" y="334" class="fs">原話・做了什麼</text>
+  <text x="582" y="354" class="fs">結果・用了哪篇</text>
+</svg></div>
+<figcaption>橫向是各家 agent，縱向是三層。前兩層每家有自己的檔名，同一個資料夾的 <code>CLAUDE.md</code> 和 <code>AGENTS.md</code> 寫相同的內容；最下面的共用技能庫和工作紀錄，每家都讀同一份。Antigravity 與 DeepSeek harness 的規則檔位置依版本和設定而不同。</figcaption>
+</figure>
+<div class="tbl"><table><thead><tr><th>層</th><th>放什麼</th><th>不放什麼</th></tr></thead><tbody><tr><td>全域</td><td>去哪裡找規則、紀錄格式、跨工作的底線</td><td>任何只屬於某類工作的規則</td></tr><tr><td>專案資料夾</td><td>這類工作已經定下的事、完成標準、專屬技能</td><td>別的工作也用得到的做法</td></tr><tr><td>共用技能庫</td><td>跨工作的做法：連線、部署、測試、設計規範</td><td>「現在的狀態」的快照</td></tr></tbody></table></div>
+<p>判斷一條規則放在哪一層，只要問一句：<strong>換一類工作，還用得到嗎？</strong>用不到就放專案資料夾；用得到就放共用技能庫，然後在全域或資料夾裡放一行指標。</p>
+<h2>三、資料夾就是工作類型</h2>
+<p>資料夾規則檔裡寫的是這類工作已經定下的事。每條守則都加上日期，之後才查得到是什麼時候、為什麼定的。</p>
+<div class="tbl"><table><thead><tr><th>工作類型</th><th>資料夾給 agent 的</th></tr></thead><tbody><tr><td>App 開發</td><td>語言範圍、收費規則、送審前的檢查、部署指令、最近做過的事</td></tr><tr><td>影片製作</td><td>專用指令、製片流程、交件前的品質關卡、素材授權怎麼標</td></tr><tr><td>後端服務</td><td>技術限制、收工前要跑的測試、不准自己部署、金鑰放在哪裡</td></tr><tr><td>報表與資料</td><td>只能查不能改、資料口徑、只在這裡用得到的驗證技能</td></tr></tbody></table></div>
+<p>規則檔可以分成三段：</p>
+<ul><li><strong>守則</strong>：已經定下的事，每條加日期。</li><li><strong>位置</strong>：倉庫、部署方式、文件放在哪。只寫代號，不寫金鑰本身。</li><li><strong>近況</strong>：做完一件事補一行，最多保留二十行，讓下一個進這個資料夾的 agent 知道最近發生了什麼。</li></ul>
+<p>只在某類工作有用的技能，放在那個資料夾的 <code>.claude/skills/</code> 或 <code>.agents/skills/</code> 裡，不要放到全域。</p>
+<h2>四、讓不同 agent 讀同一套規則</h2>
+<p>各家 agent 讀的檔名不同，可以用三個做法對齊：</p>
+<ol><li><strong>同一個資料夾放兩份內容相同的檔案</strong>。Claude Code 讀 <code>CLAUDE.md</code>，Codex 讀 <code>AGENTS.md</code>，兩份逐字相同。改規則時兩份一起改，改完用 <code>diff</code> 檢查。</li><li><strong>全域檔只寫指標</strong>。每個 agent 的全域檔寫的是同幾件事，內容都是「去讀哪一篇」，規則本身不寫在全域檔。規則會一直更新，正本只有一份，就不會出現兩個版本。</li><li><strong>共用技能庫用 HTTP 或 Git 提供</strong>。各家技能格式不同，但每個 agent 都會執行 <code>curl</code> 和 <code>git</code>。共用技能庫可以放在這兩種方式拿得到的地方，就不受哪家工具的限制。</li></ol>
+<p>外部技能也照同樣的原則處理：把它整理成共用技能庫裡的一篇文件，不要複製進某一家 agent 的技能資料夾。只有需要靠工具本身的觸發機制、而且要在本機執行的技能，才放進 agent 自己的技能資料夾。</p>
+<h2>五、共用技能庫：按需取用</h2>
+<p>共用技能庫的重點是 agent 只讀這次需要的那一篇。建議分三層索引：</p>
+<pre><code>GET /skills?q=&lt;關鍵字&gt;   → 清單：每篇只有標題和一行摘要
+GET /skill?id=&lt;入口&gt;     → 入口：「要做什麼 → 讀哪篇」的對照表
+GET /skill?id=&lt;子規格&gt;   → 只讀真正需要的那一篇</code></pre>
+<p>入口依領域分，例如主機與部署、模型與額度、App 開發、視覺與網站、影片、自動化。數量在十個以內，agent 掃一眼就知道該從哪裡進去。</p>
+<p>寫技能文件的規矩：</p>
+<ul><li>主檔只寫「怎麼做」和「禁忌」，控制在 8 KB 以內。</li><li>案例和長範例放到附件資料夾，需要時再讀。</li><li>同一件事只寫在一處，其他地方用連結。</li><li>不寫「現在的狀態」，例如哪台機器在跑什麼。這類資訊一律現場查，不然很快就過時。</li></ul>
+<figure><img src="02-library.webp" alt="從搜尋列到入口網格，只抽出被選中的那一頁" width="1280" height="720" loading="lazy" decoding="async"></figure>
+<h2>六、做完寫紀錄</h2>
+<p>紀錄讓工作可以接續。每次做完，寫一筆到同一個地方：</p>
+<pre><code>{
+  &quot;agent&quot;: &quot;&lt;工具&gt;@&lt;主機&gt;&quot;,
+  &quot;ask&quot;: &quot;&lt;交代時的原話，一字不改&gt;&quot;,
+  &quot;task&quot;: &quot;&lt;做了什麼&gt;&quot;,
+  &quot;summary&quot;: &quot;&lt;結果一兩句&gt;&quot;,
+  &quot;refs&quot;: [&quot;&lt;用到的技能、檔案&gt;&quot;]
+}</code></pre>
+<ul><li><strong><code>ask</code> 放原話</strong>。整理過的版本會混進 agent 自己的理解，事後回頭看，原話才能回答「當時到底要什麼」。</li><li><strong><code>agent</code> 寫工具和主機</strong>。出問題時，直接查得到是誰、在哪台機器做的。</li><li><strong><code>refs</code> 寫用了哪篇技能</strong>。哪篇常被用、哪篇常出錯，統計一下就知道該先改哪篇。</li></ul>
+<p>紀錄寫了之後要能被讀回來：agent 開工時先查和這次工作相關的紀錄，這筆紀錄才會在下一次自動出現。</p>
+<figure class="diagram" aria-label="工作流程：進資料夾、載入專屬技能、按需取通用技能、做完寫紀錄，紀錄再回到下一次開工">
+<div class="sv"><svg viewBox="0 0 720 250" role="img">
+  <title>一次完整的工作循環</title>
+  <defs>
+    <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ah"/></marker>
+    <marker id="fl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ahl"/></marker>
+  </defs>
+  <g>
+    <rect x="10" y="30" width="155" height="110" rx="12" class="z-folder"/>
+    <text x="24" y="58" class="step">1</text><text x="44" y="58" class="lbl lbl-folder">進資料夾</text>
+    <text x="24" y="86" class="mono-l">CLAUDE.md</text>
+    <text x="24" y="104" class="mono-l">AGENTS.md</text>
+    <text x="24" y="126" class="fs">拿到守則與近況</text>
+    <rect x="190" y="30" width="155" height="110" rx="12" class="z-folder2"/>
+    <text x="204" y="58" class="step">2</text><text x="224" y="58" class="lbl lbl-folder">載入專屬技能</text>
+    <text x="204" y="86" class="mono-l">.claude/skills/</text>
+    <text x="204" y="104" class="mono-l">.agents/skills/</text>
+    <text x="204" y="126" class="fs">只在這類工作觸發</text>
+    <rect x="370" y="30" width="155" height="110" rx="12" class="z-brain"/>
+    <text x="384" y="58" class="step">3</text><text x="404" y="58" class="lbl lbl-brain">取通用技能</text>
+    <text x="384" y="86" class="fs">查索引 → 讀入口</text>
+    <text x="384" y="104" class="fs">只讀需要的那篇</text>
+    <text x="384" y="126" class="fs">不需要就不讀</text>
+    <rect x="550" y="30" width="160" height="110" rx="12" class="z-log"/>
+    <text x="564" y="58" class="step">4</text><text x="584" y="58" class="lbl lbl-log">做完寫紀錄</text>
+    <text x="564" y="86" class="fs">原話・做了什麼</text>
+    <text x="564" y="104" class="fs">結果・用了哪篇</text>
+    <text x="564" y="126" class="fs">資料夾近況補一行</text>
+  </g>
+  <path d="M167 85 H186" class="ar" marker-end="url(#fa)"/>
+  <path d="M347 85 H366" class="ar" marker-end="url(#fa)"/>
+  <path d="M527 85 H546" class="ar" marker-end="url(#fa)"/>
+  <path d="M630 142 V200 Q630 214 616 214 H102 Q88 214 88 200 V146" class="arl" marker-end="url(#fl)"/>
+  <text x="360" y="236" class="fs lbl-log mid">下一次、下一個 agent 開工時，先讀相關紀錄</text>
+</svg></div>
+<figcaption>第 1、2 步由資料夾決定，第 3 步依需要才讀，第 4 步寫下的紀錄會在下一次開工時讀回來。</figcaption>
+</figure>
+<h2>七、代價</h2>
+<ul><li><strong>兩份檔要同步</strong>。漏改一份，兩個 agent 就會照不同的規則做事。</li><li><strong>正本只有一份，寫錯就一起錯</strong>。所以每條守則都要加日期，紀錄也要寫明用了哪篇技能，出錯時才找得到源頭。</li><li><strong>共用技能庫連不到時要有退路</strong>。在全域檔寫好備援，例如改讀本機的 Git 副本。</li><li><strong>整理要花時間</strong>。沒有索引和篇幅限制，共用技能庫最後也會變成另一個塞滿東西的全域資料夾。</li></ul>
+<h2>八、導入步驟</h2>
+<ol><li>把全域技能逐一問一次：換一類工作還用得到嗎？用不到的，搬進對應的專案資料夾。</li><li>每類工作一個資料夾，寫一份短守則，分成守則、位置、近況三段。</li><li>同一個資料夾放 <code>CLAUDE.md</code> 和 <code>AGENTS.md</code>，內容相同。</li><li>把共用的做法集中成一個有索引的技能庫，全域檔只寫「先讀這裡的入口」。</li><li>規定每次做完都寫一筆紀錄：原話、做了什麼、結果、用了哪篇。</li></ol>
+<p>前兩步一個下午就能做完。第五步要持續一個月左右才看得出效果。</p>
+</article></main>
+<aside class="side" aria-label="About this diary"><div class="note"><p class="b">Work diary</p><p>One person, a dozen small apps. I write down what I actually did and the numbers.</p></div><h2>entries</h2><ol><li><time datetime="2026-11-20">November 20, 2026</time><a href="/blog/skills-in-folders-not-global/" aria-current="page">技能不放全域：用資料夾組織 AI agent 的技能</a></li><li><time datetime="2026-11-20">November 20, 2026</time><a href="/blog/i-only-remember-what-i-write/">I only remember what I write</a></li><li><time datetime="2026-11-19">November 19, 2026</time><a href="/blog/after-app-review/">Nine apps were waiting for App Review. Here is what happened.</a></li><li><time datetime="2026-11-16">November 16, 2026</time><a href="/blog/a-day-of-looking-after-11-apps/">A day of looking after 11 apps, alone</a></li></ol></aside>
+</div>
+<footer>made by hand, one card at a time · <a href="/">all the apps</a> · <a href="https://x.com/SonaOrbit">X</a> · <a href="mailto:sona.orbit.hi@gmail.com">sona.orbit.hi@gmail.com</a></footer>
+</body>
+</html>
