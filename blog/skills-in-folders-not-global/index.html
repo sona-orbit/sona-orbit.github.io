@@ -154,23 +154,22 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;colo
   <text x="20" y="84" class="lbl">全域</text><text x="20" y="102" class="fs">只放指標</text>
   <text x="190" y="92" class="mono">~/.claude/CLAUDE.md</text>
   <text x="340" y="92" class="mono">~/.codex/AGENTS.md</text>
-  <text x="490" y="92" class="mono">工具的全域設定</text>
-  <text x="640" y="92" class="mono">harness home</text>
+  <text x="490" y="92" class="mono">~/.gemini/GEMINI.md</text>
+  <text x="640" y="92" class="mono">$DSH_HOME/AGENTS.md</text>
   <!-- 專案規則 -->
   <rect x="10" y="122" width="700" height="50" rx="10" class="z-folder"/>
   <text x="20" y="144" class="lbl lbl-folder">專案資料夾</text><text x="20" y="162" class="fs">這類工作的守則</text>
   <text x="190" y="152" class="mono">./CLAUDE.md</text>
   <text x="340" y="152" class="mono">./AGENTS.md</text>
-  <text x="490" y="152" class="mono">專案規則檔</text>
-  <text x="640" y="152" class="mono">專案規則檔</text>
+  <text x="490" y="152" class="mono">./AGENTS.md</text>
+  <text x="640" y="152" class="mono">./AGENTS.md</text>
   <path d="M232 147 H298" class="eq"/><text x="265" y="140" class="eqt">內容相同</text>
+  <path d="M382 147 H448 M532 147 H598" class="eq"/><text x="565" y="140" class="eqt">同一個檔</text>
   <!-- 專屬技能 -->
   <rect x="10" y="182" width="700" height="50" rx="10" class="z-folder2"/>
   <text x="20" y="204" class="lbl lbl-folder">專屬技能</text><text x="20" y="222" class="fs">只在這裡觸發</text>
-  <text x="190" y="212" class="mono">.claude/skills/</text>
-  <text x="340" y="212" class="mono">.agents/skills/</text>
-  <text x="490" y="212" class="mono">…/skills/</text>
-  <text x="640" y="212" class="mono">home/skills/</text>
+  <text x="415" y="206" class="mono">./.agents/skills/</text>
+  <text x="415" y="224" class="fs mid">四家共用一份，放在專案資料夾裡</text>
   <!-- 按需讀取的箭頭 -->
   <path d="M190 236 V284" class="ar" marker-end="url(#ah)"/>
   <path d="M340 236 V284" class="ar" marker-end="url(#ah)"/>
@@ -188,7 +187,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;colo
   <text x="582" y="334" class="fs">原話・做了什麼</text>
   <text x="582" y="354" class="fs">結果・用了哪篇</text>
 </svg></div>
-<figcaption>橫向是各家 agent，縱向是三層。前兩層每家有自己的檔名，同一個資料夾的 <code>CLAUDE.md</code> 和 <code>AGENTS.md</code> 寫相同的內容；最下面的共用技能庫和工作紀錄，每家都讀同一份。Antigravity 與 DeepSeek harness 的規則檔位置依版本和設定而不同。</figcaption>
+<figcaption>橫向是各家 agent，縱向是三層。全域各家位置不同；專案資料夾裡，Codex、Antigravity、DeepSeek harness 都讀 <code>AGENTS.md</code>，只有 Claude Code 讀 <code>CLAUDE.md</code>，所以一個資料夾放這兩份、內容相同就夠了。最下面的共用技能庫和工作紀錄，每家都讀同一份。專屬技能只放一份在 <code>.agents/skills/</code>；Claude Code 預設讀 <code>.claude/skills/</code>，用一個連結指過去就好。Antigravity 的全域也可以用 <code>~/.gemini/AGENTS.md</code>。</figcaption>
 </figure>
 <div class="tbl"><table><thead><tr><th>層</th><th>放什麼</th><th>不放什麼</th></tr></thead><tbody><tr><td>全域</td><td>去哪裡找規則、紀錄格式、跨工作的底線</td><td>任何只屬於某類工作的規則</td></tr><tr><td>專案資料夾</td><td>這類工作已經定下的事、完成標準、專屬技能</td><td>別的工作也用得到的做法</td></tr><tr><td>共用技能庫</td><td>跨工作的做法：連線、部署、測試、設計規範</td><td>「現在的狀態」的快照</td></tr></tbody></table></div>
 <p>判斷一條規則放在哪一層，只要問一句：<strong>換一類工作，還用得到嗎？</strong>用不到就放專案資料夾；用得到就放共用技能庫，然後在全域或資料夾裡放一行指標。</p>
@@ -197,10 +196,10 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;colo
 <div class="tbl"><table><thead><tr><th>工作類型</th><th>資料夾給 agent 的</th></tr></thead><tbody><tr><td>App 開發</td><td>語言範圍、收費規則、送審前的檢查、部署指令、最近做過的事</td></tr><tr><td>影片製作</td><td>專用指令、製片流程、交件前的品質關卡、素材授權怎麼標</td></tr><tr><td>後端服務</td><td>技術限制、收工前要跑的測試、不准自己部署、金鑰放在哪裡</td></tr><tr><td>報表與資料</td><td>只能查不能改、資料口徑、只在這裡用得到的驗證技能</td></tr></tbody></table></div>
 <p>規則檔可以分成三段：</p>
 <ul><li><strong>守則</strong>：已經定下的事，每條加日期。</li><li><strong>位置</strong>：倉庫、部署方式、文件放在哪。只寫代號，不寫金鑰本身。</li><li><strong>近況</strong>：做完一件事補一行，最多保留二十行，讓下一個進這個資料夾的 agent 知道最近發生了什麼。</li></ul>
-<p>只在某類工作有用的技能，放在那個資料夾的 <code>.claude/skills/</code> 或 <code>.agents/skills/</code> 裡，不要放到全域。</p>
+<p>只在某類工作有用的技能，放在那個資料夾的 <code>.agents/skills/</code> 裡，不要放到全域。Codex、Antigravity 直接讀這裡；Claude Code 預設讀 <code>.claude/skills/</code>，做一個連結指到 <code>.agents/skills/</code>，技能就只有一份。</p>
 <h2>四、讓不同 agent 讀同一套規則</h2>
 <p>各家 agent 讀的檔名不同，可以用三個做法對齊：</p>
-<ol><li><strong>同一個資料夾放兩份內容相同的檔案</strong>。Claude Code 讀 <code>CLAUDE.md</code>，Codex 讀 <code>AGENTS.md</code>，兩份逐字相同。改規則時兩份一起改，改完用 <code>diff</code> 檢查。</li><li><strong>全域檔只寫指標</strong>。每個 agent 的全域檔寫的是同幾件事，內容都是「去讀哪一篇」，規則本身不寫在全域檔。規則會一直更新，正本只有一份，就不會出現兩個版本。</li><li><strong>共用技能庫用 HTTP 或 Git 提供</strong>。各家技能格式不同，但每個 agent 都會執行 <code>curl</code> 和 <code>git</code>。共用技能庫可以放在這兩種方式拿得到的地方，就不受哪家工具的限制。</li></ol>
+<ol><li><strong>同一個資料夾放兩份內容相同的檔案</strong>。Claude Code 讀 <code>CLAUDE.md</code>；Codex、Antigravity、DeepSeek harness 都讀 <code>AGENTS.md</code>。兩份逐字相同，四家就讀到同一套規則。改規則時兩份一起改，改完用 <code>diff</code> 檢查。</li><li><strong>全域檔只寫指標</strong>。每個 agent 的全域檔寫的是同幾件事，內容都是「去讀哪一篇」，規則本身不寫在全域檔。規則會一直更新，正本只有一份，就不會出現兩個版本。</li><li><strong>共用技能庫用 HTTP 或 Git 提供</strong>。各家技能格式不同，但每個 agent 都會執行 <code>curl</code> 和 <code>git</code>。共用技能庫可以放在這兩種方式拿得到的地方，就不受哪家工具的限制。</li></ol>
 <p>外部技能也照同樣的原則處理：把它整理成共用技能庫裡的一篇文件，不要複製進某一家 agent 的技能資料夾。只有需要靠工具本身的觸發機制、而且要在本機執行的技能，才放進 agent 自己的技能資料夾。</p>
 <h2>五、共用技能庫：按需取用</h2>
 <p>共用技能庫的重點是 agent 只讀這次需要的那一篇。建議分三層索引：</p>
@@ -237,8 +236,8 @@ GET /skill?id=&lt;子規格&gt;   → 只讀真正需要的那一篇</code></pre
     <text x="24" y="126" class="fs">拿到守則與近況</text>
     <rect x="190" y="30" width="155" height="110" rx="12" class="z-folder2"/>
     <text x="204" y="58" class="step">2</text><text x="224" y="58" class="lbl lbl-folder">載入專屬技能</text>
-    <text x="204" y="86" class="mono-l">.claude/skills/</text>
-    <text x="204" y="104" class="mono-l">.agents/skills/</text>
+    <text x="204" y="86" class="mono-l">.agents/skills/</text>
+    <text x="204" y="104" class="fs">四家共用一份</text>
     <text x="204" y="126" class="fs">只在這類工作觸發</text>
     <rect x="370" y="30" width="155" height="110" rx="12" class="z-brain"/>
     <text x="384" y="58" class="step">3</text><text x="404" y="58" class="lbl lbl-brain">取通用技能</text>
