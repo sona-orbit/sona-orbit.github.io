@@ -177,15 +177,15 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;colo
   <path d="M490 236 V284" class="ar" marker-end="url(#ah-en)"/>
   <path d="M640 236 V284" class="arl" marker-end="url(#ahl-en)"/>
   <text x="196" y="264" class="fs">read on demand</text>
-  <text x="646" y="264" class="fs lbl-log">write when done</text>
+  <text x="646" y="264" class="fs lbl-log">write</text>
   <rect x="10" y="290" width="550" height="76" rx="12" class="z-brain"/>
   <text x="20" y="314" class="lbl lbl-brain">Shared library</text>
   <text x="20" y="334" class="fs">HTTP or Git, reachable by every agent</text>
   <text x="20" y="354" class="fs">index → hub → page, read only what you need</text>
   <rect x="570" y="290" width="140" height="76" rx="12" class="z-log"/>
   <text x="582" y="314" class="lbl lbl-log">Log</text>
-  <text x="582" y="334" class="fs">request · what was done</text>
-  <text x="582" y="354" class="fs">result · pages used</text>
+  <text x="582" y="334" class="fs">request · steps/text>
+  <text x="582" y="354" class="fs">result · pages</text>
 </svg></div>
 <figcaption>Across: the four agents. Down: the three layers. Global files live in different places. In the project folder, Codex, Antigravity and DeepSeek harness all read <code>AGENTS.md</code> and only Claude Code reads <code>CLAUDE.md</code>, so two identical files per folder is enough. Own skills are kept once in <code>.agents/skills/</code>; Claude Code reads <code>.claude/skills/</code> by default, so point a symlink there. Antigravity also accepts <code>~/.gemini/AGENTS.md</code> as its global file. The shared library and the log at the bottom are one copy for everyone.</figcaption>
 </figure>
@@ -246,7 +246,7 @@ GET /skill?id=&lt;sub-page&gt;     → only the page you actually need</code></p
     <text x="384" y="126" class="fs">skip it if not needed</text>
     <rect x="550" y="30" width="160" height="110" rx="12" class="z-log"/>
     <text x="564" y="58" class="step">4</text><text x="584" y="58" class="lbl lbl-log">Write the log</text>
-    <text x="564" y="86" class="fs">request · what was done</text>
+    <text x="564" y="86" class="fs">request · steps</text>
     <text x="564" y="104" class="fs">result · pages used</text>
     <text x="564" y="126" class="fs">add a line to Recent</text>
   </g>
