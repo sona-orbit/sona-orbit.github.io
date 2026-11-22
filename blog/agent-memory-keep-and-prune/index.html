@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="text-scale" content="scale">
+<meta name="theme-color" content="#e4e2dd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1f1e1c" media="(prefers-color-scheme: dark)">
+<script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script>
+<title>Agent 越用越笨？記憶和技能要會留，也要會砍 — Sona Orbit</title>
+<meta name="description" content="讓 AI agent 自己寫記憶、包技能，用久了反而變僵變脆：經驗污染、局部過擬合、能力退化。哪些經驗值得留、什麼時候該停下來檢查、三個讓記憶保持健康的做法，文末附一段請 agent 自我盤點的提示詞。">
+<link rel="canonical" href="https://sona-orbit.github.io/blog/agent-memory-keep-and-prune/">
+<link rel="alternate" hreflang="en" href="https://sona-orbit.github.io/blog/why-agents-get-worse-with-memory/">
+<link rel="alternate" hreflang="zh-Hant" href="https://sona-orbit.github.io/blog/agent-memory-keep-and-prune/">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Sona Orbit">
+<meta property="og:title" content="Agent 越用越笨？記憶和技能要會留，也要會砍"><meta property="og:description" content="讓 AI agent 自己寫記憶、包技能，用久了反而變僵變脆：經驗污染、局部過擬合、能力退化。哪些經驗值得留、什麼時候該停下來檢查、三個讓記憶保持健康的做法，文末附一段請 agent 自我盤點的提示詞。"><meta property="og:url" content="https://sona-orbit.github.io/blog/agent-memory-keep-and-prune/">
+<meta property="og:image" content="https://sona-orbit.github.io/blog/agent-memory-keep-and-prune/01-cover.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@SonaOrbit">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Agent 越用越笨？記憶和技能要會留，也要會砍", "description": "讓 AI agent 自己寫記憶、包技能，用久了反而變僵變脆：經驗污染、局部過擬合、能力退化。哪些經驗值得留、什麼時候該停下來檢查、三個讓記憶保持健康的做法，文末附一段請 agent 自我盤點的提示詞。", "datePublished": "2026-11-22T18:40:00+08:00", "dateModified": "2026-11-22T18:40:00+08:00", "inLanguage": "zh-Hant", "image": "https://sona-orbit.github.io/blog/agent-memory-keep-and-prune/01-cover.jpg", "mainEntityOfPage": "https://sona-orbit.github.io/blog/agent-memory-keep-and-prune/", "author": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "publisher": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "isPartOf": {"@id": "https://sona-orbit.github.io/blog/#blog"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%226%22 y=%223%22 width=%2220%22 height=%2226%22 rx=%222%22 fill=%22white%22 stroke=%22black%22 stroke-width=%222%22 transform=%22rotate(-8 16 16)%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;600&family=Noto+Serif+TC:wght@600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--table:#e4e2dd;--paper:#ffffff;--ink:#141414;--muted:#5d5b57;--on-table:#141414;--on-table-muted:#5d5b57;--line:rgba(0,0,0,.14);--shadow:0 1px 2px rgba(0,0,0,.12),0 8px 22px rgba(0,0,0,.10);--note:#fff3a6;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}}
+:root[data-theme="dark"]{--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--table);color:var(--on-table);font:1rem/1.65 Inter,system-ui,-apple-system,"PingFang TC",sans-serif;min-height:100vh}
+a{color:inherit}
+.top{display:flex;align-items:baseline;gap:14px;padding:18px 20px;max-width:1120px;margin:0 auto}
+.brand{font:700 1.75rem/1 Caveat,cursive;margin:0;text-decoration:none}
+.top .where{font:500 1.25rem/1 Caveat,cursive;color:var(--on-table-muted);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 20px 56px;display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+.paper{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);border-radius:3px;padding:28px 22px 34px;position:relative;min-width:0}
+.paper::before{content:"";position:absolute;top:-10px;left:50%;width:92px;height:22px;margin-left:-46px;background:var(--tape);transform:rotate(-2deg);box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.paper h1{font:700 clamp(2rem,1.3rem + 2.6vw,3rem)/1.08 Caveat,cursive;margin:0 0 6px;text-wrap:balance}
+.paper .when{font:500 1.2rem/1.2 Caveat,cursive;color:var(--muted);margin:0 0 18px}
+.paper h2{font:700 1.75rem/1.15 Caveat,cursive;margin:34px 0 8px;text-wrap:balance}
+.paper h3{font:700 1.4rem/1.2 Caveat,cursive;margin:26px 0 6px;text-wrap:balance}
+.paper p{margin:0 0 14px;max-width:66ch}
+.prose ul{margin:0 0 16px;padding:0;list-style:none;max-width:66ch}
+.prose li{padding:8px 0 8px 22px;border-top:1.5px dashed var(--line);position:relative}
+.prose li:last-child{border-bottom:1.5px dashed var(--line)}
+.prose li::before{content:"";position:absolute;left:4px;top:1.05em;width:7px;height:7px;border:1.5px solid var(--ink);border-radius:50%}
+.paper figure{margin:18px -6px 20px}
+.paper img{display:block;width:100%;height:auto;border-radius:2px;border:1.5px solid var(--line)}
+.paper .src{margin-top:26px;font-size:.9375rem;color:var(--muted)}
+.side{align-self:start}
+.side .note{background:var(--note);color:var(--note-ink);padding:14px 16px 12px;border-radius:2px;box-shadow:var(--shadow);transform:rotate(-1.5deg);font:500 1.2rem/1.3 Caveat,cursive;max-width:280px}
+.side .note p{margin:0}.side .note .b{font-weight:700;font-size:1.35rem}
+.side h2{font:700 1.5rem/1 Caveat,cursive;margin:26px 0 6px}
+.side ol{list-style:none;margin:0;padding:0}
+.side li{padding:9px 0;border-top:1.5px dashed var(--line);font-size:.9375rem}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .side li{border-top-color:rgba(255,255,255,.16)}}
+.side li a{font-weight:600;text-decoration:none}
+.side li a:hover,.side li a:focus-visible{text-decoration:underline}
+.side li a[aria-current]{text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px}
+.side time{display:block;font:500 1.05rem/1.3 Caveat,cursive;color:var(--on-table-muted)}
+.entries{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.entry{display:grid;gap:14px}
+.entry a.pic{display:block}
+.entry h2{margin:0 0 4px;font:700 1.9rem/1.1 Caveat,cursive}
+.entry h2 a{text-decoration:none}
+.entry h2 a:hover,.entry h2 a:focus-visible{text-decoration:underline}
+.entry .when{margin:0 0 8px}
+.entry p{margin:0}
+footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;color:var(--on-table-muted)}
+/* 中文文章（lang: zh-Hant）：Caveat 沒有中文字，標題改用 Noto Serif TC */
+.prose{--soft:#f4f2ee;--zh-hand:"Noto Serif TC","Songti TC",serif;--sans:Inter,system-ui,-apple-system,"PingFang TC",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+.prose.zh{line-height:1.85}
+.prose .swap{margin:-8px 0 18px;font:600 .9375rem/1.4 Inter,"PingFang TC",sans-serif}
+.prose .swap a{text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px}
+.prose:not(.zh) th{font:600 .875rem/1.4 Inter,system-ui,sans-serif}
+.prose:not(.zh) .diagram .lbl{font:700 17px Caveat,cursive}
+.prose.zh h1{font:700 clamp(1.75rem,1.3rem + 1.8vw,2.5rem)/1.35 var(--zh-hand);margin:0 0 10px}
+.prose.zh h2{font:700 clamp(1.375rem,1.2rem + .8vw,1.7rem)/1.45 var(--zh-hand);margin:36px 0 10px}
+.prose.zh h3{font:700 1.15rem/1.5 var(--zh-hand);margin:26px 0 8px}
+.prose.zh p,.prose.zh li{text-wrap:pretty}
+.entry h2 a.zh{font:700 1.45rem/1.35 "Noto Serif TC","Songti TC",serif}
+.prose strong{font-weight:600;background:linear-gradient(transparent 62%,var(--note) 62%)}
+.prose code{font-family:var(--mono);font-size:.82em;background:var(--soft);padding:.1em .38em;border-radius:3px;overflow-wrap:anywhere}
+.prose pre{background:var(--soft);border-radius:3px;padding:14px 16px;overflow-x:auto;font-size:.84rem;line-height:1.6;margin:0 0 16px}
+.prose pre code{background:none;padding:0;font-size:inherit;overflow-wrap:normal}
+.prose pre.prompt{white-space:pre-wrap;font:.9375rem/1.75 Inter,system-ui,-apple-system,"PingFang TC",sans-serif;padding:16px 18px;max-width:66ch}.prose pre.prompt code{font:inherit;overflow-wrap:anywhere}
+.prose ol{margin:0 0 16px;padding-left:1.5em;max-width:66ch}
+.prose ol li{padding:6px 0 6px 4px;border-top:0;border-bottom:0}
+.prose ol li::before{content:none}
+.prose ol li:last-child{border-bottom:0}
+.prose .tbl{overflow-x:auto;margin:0 0 18px}
+.prose table{border-collapse:collapse;width:100%;font-size:.9375rem;line-height:1.6}
+.prose th,.prose td{text-align:left;padding:9px 10px;border-bottom:1.5px dashed var(--line);vertical-align:top}
+.prose th{font:700 .9375rem/1.4 var(--zh-hand);border-bottom:1.5px solid var(--ink)}
+.prose tr:last-child td{border-bottom:0}
+/* 內嵌 SVG 架構圖：白紙上的墨線，共用技能庫用便條黃 */
+.prose figure.diagram{margin:22px 0 24px}
+.prose figure.diagram .sv{overflow-x:auto}
+.prose figure.diagram svg{width:100%;height:auto;display:block}
+.prose figure.diagram figcaption{font-size:.875rem;color:var(--muted);margin-top:10px;line-height:1.65}
+@media (max-width:760px){.prose figure.diagram svg{min-width:720px}.prose figure.diagram::before{content:"← swipe to see the whole diagram →";display:block;font-size:.75rem;color:var(--muted);margin-bottom:6px}}
+.prose .diagram .z-global{fill:var(--soft);stroke:var(--ink);stroke-width:1.3}
+.prose .diagram .z-folder{fill:#fff;stroke:var(--ink);stroke-width:1.3}
+.prose .diagram .z-folder2{fill:#fff;stroke:var(--ink);stroke-width:1.3;stroke-dasharray:6 4}
+.prose .diagram .z-brain{fill:var(--note);stroke:var(--ink);stroke-width:1.6}
+.prose .diagram .z-log{fill:#fff;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:2 3}
+.prose .diagram .ag{fill:var(--ink)}
+.prose .diagram text{font-family:var(--sans);fill:var(--ink)}
+.prose .diagram .agt{font-size:12.5px;font-weight:600;text-anchor:middle;fill:#fff}
+.prose .diagram .lbl{font:700 15px var(--zh-hand)}
+.prose .diagram .fs{font-size:12.5px;fill:var(--muted)}
+.prose .diagram .mono{font-family:var(--mono);font-size:12px;text-anchor:middle}
+.prose .diagram .mono-l{font-family:var(--mono);font-size:12px}
+.prose .diagram .step{font:700 20px Caveat,cursive;fill:var(--muted)}
+.prose .diagram .mid{text-anchor:middle}
+.prose .diagram .ar{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-dasharray:5 4}
+.prose .diagram .arl{stroke:var(--ink);stroke-width:1.6;fill:none}
+.prose .diagram .ah,.prose .diagram .ahl{fill:var(--ink)}
+.prose .diagram .eq{stroke:var(--muted);stroke-width:1.3;fill:none}
+.prose .diagram .eqt{font-size:11.5px;fill:var(--muted);text-anchor:middle}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (min-width:920px){
+  .wrap{grid-template-columns:260px minmax(0,1fr);gap:44px;padding-top:18px}
+  .side{position:sticky;top:24px;order:-1}
+  .paper{padding:44px 56px 52px}
+  .paper figure{margin:22px -20px 26px}
+  .entry{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px;align-items:center}
+}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="/">Sona Orbit</a><a class="where" href="/blog/">work diary</a></header>
+<div class="wrap">
+<main><article class="paper prose zh" lang="zh-Hant"><h1>Agent 越用越笨？記憶和技能要會留，也要會砍</h1><p class="when"><time datetime="2026-11-22T18:40:00+08:00">November 22, 2026</time> · Sona Orbit</p><p class="swap"><a href="/blog/why-agents-get-worse-with-memory/" hreflang="en" lang="en">English version →</a></p>
+<figure><img src="01-cover.webp" alt="記憶庫裡，有的卡片乾淨發亮，有的已經發灰裂開，被抽出來丟進收納盒；旁邊的成功率先升後降" width="1280" height="720" fetchpriority="high" decoding="async"></figure>
+<h2>一開始，它真的越來越聰明</h2>
+<p>做 AI agent 的人，大多有一個很自然的想法：讓 agent 記住犯過的錯，把解法寫成可以重複叫用的技能，它就會越用越聰明。</p>
+<p>剛開始確實是這樣。第一次踩坑，第二次會避開，第三次已經能直接叫寫好的腳本或照 SOP 做完。可是用了一陣子，很多人會發現系統開始變僵、變脆，連原本很拿手的工作都開始出錯。</p>
+<p>模型本身沒有變差。出問題的是越積越多的記憶和技能。下面先講它為什麼會變成負擔，再講哪些經驗值得留、什麼時候該停下來檢查，最後是讓記憶保持健康的三個做法。</p>
+<h2>為什麼記憶和技能會變成負擔</h2>
+<p>agent 能寫長期記憶、能自己包技能的時候，等於在一點一點改寫自己的系統提示和工具箱。沒有人把關、也沒有淘汰機制，很容易掉進下面三個坑。</p>
+<figure><img src="02-toolbox.webp" alt="工具箱塞滿幾乎一樣的卡片，線纏成一團，游標卡在旁邊；左邊只有一張簡單的卡片" width="1280" height="720" loading="lazy" decoding="async"></figure>
+<h3>經驗污染：把碰巧當成規則</h3>
+<p>agent 整理經驗的方式通常很直接：這次成功了，所以剛剛做的步驟是對的。</p>
+<p>舉個例子。某次呼叫 API 逾時，agent 重試時順手多加了一個沒用的參數，剛好伺服器恢復了，這次就成功。它在記憶裡寫下「呼叫這個 API 一定要加這個參數」。</p>
+<p>這條錯的經驗一旦寫進去，之後每次檢索都會把它當重要參考拿出來。照著錯的經驗做，失敗紀錄變多，再從失敗紀錄整理出更歪的結論，越滾越大，很難倒回來。</p>
+<p>過時的經驗也一樣。技能裡寫「某台主機現在跑了哪些服務」，一個月後主機早就換過一輪，技能還照舊那樣寫，agent 也照舊那樣信。</p>
+<h3>局部過擬合：為一個特例做一套補丁</h3>
+<p>工程師修 bug 時，如果只為某一筆測試資料加一個 if，code review 會退回。會自己寫技能的 agent 卻很擅長做這種事。</p>
+<p>比如某個網頁排版特別怪，agent 就寫了一個專門解析那個頁面結構的技能。下次遇到類似的頁面，它優先叫這個專屬技能，不再用一般的推理去看新頁面長什麼樣子。</p>
+<p>這種特例技能一多，工具箱裡就塞滿看起來很像、細節卻互相打架的指令。遇到以前看過的特例，它表現很好；環境稍微一變，或碰到新問題，就因為死守舊規則卡住。</p>
+<h3>能力退化：太依賴工具，上下文被稀釋</h3>
+<p>「先查記憶、再叫技能」變成預設流程以後，模型原本就有的推理能力反而用不上了。</p>
+<p>每次開工前，系統先塞進幾十條歷史教訓和幾十份技能說明。這些內容佔掉有限的上下文，真正和這次任務有關的指令反而被淹沒。</p>
+<p>還有一種情況是想太多。一個靠基本邏輯就能直接解決的問題，agent 卻花一堆 token 去翻記憶、比對技能，硬要套一個其實不太合的舊技能，把簡單的事做複雜了。</p>
+<h2>什麼經驗值得留成技能</h2>
+<p>不要讓 agent 想寫就寫。一條經驗要同時符合下面三點，才值得長期留下來：</p>
+<ul><li><strong>結果穩定、可以重現</strong>。解決的是規則清楚、環境穩定的問題，例如固定格式的資料轉換、標準化的資料庫查詢、驗證過的登入流程。</li><li><strong>常常用到，而且跨任務</strong>。之後很多不同的任務都會再碰到，不只是為了某一次任務。</li><li><strong>補模型本身的短處</strong>。模型靠推理做不穩的事，例如精確計算、嚴格的格式檢查、查外部系統的當下狀態，最值得寫成程式化的技能。</li></ul>
+<p>只符合其中一點的，寫在那次任務的紀錄裡就好，不用升格成技能。</p>
+<h2>什麼時候該停下來檢查</h2>
+<p>出現下面任何一種情況，先停掉 agent 自動寫記憶、寫技能的權限，由人或另一套獨立的檢查流程來看：</p>
+<ul><li><strong>同一類任務的成功率先升後降</strong>。這是最典型的訊號，代表新寫進去的規則開始破壞原本有效的做法。</li><li><strong>流程變長、token 用量暴增</strong>。agent 開始在「叫技能 A、出錯、翻記憶、改叫技能 B、又出錯」之間來回，通常是技能之間互相衝突，或說明寫得太模糊。</li><li><strong>錯誤從「不會做」變成「很固執地做錯」</strong>。早期的錯多半是不知道；後期如果是無視這次明確的指示，堅持照舊習慣做，代表舊記憶的份量已經壓過當下的指令。</li><li><strong>外部環境或底層模型換了</strong>。API 改版，或把模型換成推理更強的新版本時，過去為了幫舊模型繞路而寫的補丁技能，很多都會變成阻礙。這時候應該大批清理，必要時整個經驗庫重來。</li></ul>
+<h2>讓記憶保持健康的三個做法</h2>
+<p>如果你在設計會自己學習的 agent，可以在架構裡加三個「新陳代謝」的機制。</p>
+<figure class="diagram" aria-label="記憶的新陳代謝：反省先進草稿區，跑測試通過才進正式庫，正式庫記錄使用次數與成功率，久未用或常失敗的降權刪除，定期合併重構">
+<div class="sv"><svg viewBox="0 0 720 250" role="img">
+  <title>記憶的新陳代謝</title>
+  <defs><marker id="la" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ah"/></marker></defs>
+  <rect x="10" y="30" width="150" height="96" rx="12" class="z-folder2"/>
+  <text x="22" y="58" class="step">1</text><text x="40" y="58" class="lbl">草稿區</text>
+  <text x="22" y="84" class="fs">任務中的反省</text><text x="22" y="104" class="fs">先寫在這裡</text>
+  <rect x="195" y="30" width="150" height="96" rx="12" class="z-global"/>
+  <text x="207" y="58" class="step">2</text><text x="225" y="58" class="lbl">跑測試題</text>
+  <text x="207" y="84" class="fs">通過率有變好嗎？</text><text x="207" y="104" class="fs">沒有就丟掉</text>
+  <rect x="380" y="30" width="150" height="96" rx="12" class="z-brain"/>
+  <text x="392" y="58" class="step">3</text><text x="410" y="58" class="lbl">正式庫</text>
+  <text x="392" y="84" class="fs">只放做法和禁忌</text><text x="392" y="104" class="fs">不放現在的狀態</text>
+  <rect x="565" y="30" width="145" height="96" rx="12" class="z-log"/>
+  <text x="577" y="58" class="step">4</text><text x="595" y="58" class="lbl">使用紀錄</text>
+  <text x="577" y="84" class="fs">叫用幾次</text><text x="577" y="104" class="fs">之後成功率多少</text>
+  <path d="M161 78 H191" class="arl" marker-end="url(#la)"/>
+  <path d="M346 78 H376" class="arl" marker-end="url(#la)"/>
+  <path d="M531 78 H561" class="arl" marker-end="url(#la)"/>
+  <rect x="380" y="168" width="330" height="64" rx="12" class="z-folder"/>
+  <text x="392" y="192" class="step">5</text><text x="410" y="192" class="lbl">降權、隔離、刪除・定期合併</text>
+  <text x="392" y="216" class="fs">久沒用或常失敗的先降權；重複的合成一個通用工具</text>
+  <path d="M637 127 V164" class="arl" marker-end="url(#la)"/>
+  <path d="M455 166 V131" class="ar" marker-end="url(#la)"/>
+  <text x="270" y="152" class="fs mid">2 沒通過 → 不進正式庫</text>
+</svg></div>
+<figcaption>新的經驗先進草稿區，跑過測試才合併；進了正式庫也要記錄用得好不好，久沒用或常失敗的就降權、刪除，定期把零散的技能合併。</figcaption>
+</figure>
+<p><strong>記錄使用次數，讓經驗會過期。</strong> 每條記憶、每個技能都記下被叫用幾次，以及叫用之後任務最後有沒有成功。很久沒用到的，或一用就常常失敗的，自動降低權重、先隔離，最後刪掉。</p>
+<p><strong>寫入和正式庫分開。</strong> 不要讓 agent 在做任務的當下直接改正式的記憶庫。它的反省先寫進草稿區，再用一組固定的測試題跑一遍，看加進這條經驗之後整體通過率有沒有真的變好。有變好才合併進正式庫。</p>
+<p><strong>定期整理、合併。</strong> 跟程式需要重構一樣，每隔一段時間請一個能力比較強的模型把零散的技能看過一遍：重複的邏輯合成一個比較通用的工具，過時的特例補丁直接刪。</p>
+<p>還有一個簡單的習慣：會變的事情不要寫進技能。哪台機器在跑什麼、某個服務現在的設定，每次都當場查。技能只寫做法和禁忌，就不會有一份悄悄過期的副本。</p>
+<h2>一頁檢查清單</h2>
+<ul><li>這條經驗能重現嗎？換一個任務還用得到嗎？</li><li>它補的是模型做不穩的事，還是模型本來就會的事？</li><li>每個技能都有使用次數和成功率嗎？</li><li>新經驗是先進草稿區、跑過測試才合併，還是直接寫進正式庫？</li><li>最近同類任務的成功率，有沒有先升後降？</li><li>換了模型或 API 之後，舊的補丁技能清過了嗎？</li><li>技能裡有沒有寫「現在的狀態」？</li></ul>
+<p>記得多不一定比較好，知道什麼時候該忘掉，agent 才能一直用新的眼光看眼前的問題。</p>
+<h2>附：請 agent 幫你盤點的提示詞</h2>
+<p>想先看看自己的 agent 現在積了多少東西，可以把下面這段直接貼給它。它只會盤點、列清單，不會自己動手刪改，等你看過再決定。</p>
+<pre class="prompt"><code>請幫我整理你目前的長期記憶和技能。這一輪先不要刪改任何東西，只做盤點，最後給我一份清單讓我確認。
+
+1. 列出所有記憶和技能，每一項寫：名稱、一句話用途、最後一次用到的時間（不知道就寫不知道）。
+2. 每一項標成「保留」「合併」「改寫」「刪除」其中一種，附一句理由：
+   - 只在某一次任務成功過、說不出為什麼有效的，標刪除或改寫。
+   - 只為單一特例寫的，看能不能併進比較通用的技能；併不進去就刪除。
+   - 內容重疊或互相矛盾的，標合併，寫出合併後要留哪一個說法。
+   - 寫了「現在的狀態」（哪台機器在跑什麼、某個設定值）的，改成「每次當場查」。
+   - 模型本來就做得好的事（一般推理、寫作、摘要），不需要技能，標刪除。
+   - 結果穩定、常常跨任務用到、補的是模型做不穩的事（精確計算、格式檢查、查外部系統），才標保留。
+3. 列出最近開始常出錯、或流程變長的任務類型，說明可能是哪幾條記憶或技能造成的。
+4. 最後給我三個數字：保留幾項、合併後剩幾項、建議刪掉幾項。
+
+等我確認之後再照清單動手。改完記一筆：改了哪些、為什麼。</code></pre>
+</article></main>
+<aside class="side" aria-label="About this diary"><div class="note"><p class="b">Work diary</p><p>One person, a dozen small apps. I write down what I actually did and the numbers.</p></div><h2>entries</h2><ol><li><time datetime="2026-11-22">November 22, 2026</time><a href="/blog/why-agents-get-worse-with-memory/">Why agents get worse the more they remember</a></li><li><time datetime="2026-11-22">November 22, 2026</time><a href="/blog/agent-memory-keep-and-prune/" aria-current="page">Agent 越用越笨？記憶和技能要會留，也要會砍</a></li><li><time datetime="2026-11-20">November 20, 2026</time><a href="/blog/keep-agent-skills-in-folders/">Keep your agent skills in folders, not global</a></li><li><time datetime="2026-11-20">November 20, 2026</time><a href="/blog/skills-in-folders-not-global/">技能不放全域：用資料夾組織 AI agent 的技能</a></li><li><time datetime="2026-11-20">November 20, 2026</time><a href="/blog/i-only-remember-what-i-write/">I only remember what I write</a></li><li><time datetime="2026-11-19">November 19, 2026</time><a href="/blog/after-app-review/">Nine apps were waiting for App Review. Here is what happened.</a></li><li><time datetime="2026-11-16">November 16, 2026</time><a href="/blog/a-day-of-looking-after-11-apps/">A day of looking after 11 apps, alone</a></li></ol></aside>
+</div>
+<footer>made by hand, one card at a time · <a href="/">all the apps</a> · <a href="https://x.com/SonaOrbit">X</a> · <a href="mailto:sona.orbit.hi@gmail.com">sona.orbit.hi@gmail.com</a></footer>
+</body>
+</html>
