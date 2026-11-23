@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://sona-orbit.github.io/sitemap.xml
+Sitemap: https://sona-orbit.github.io/sitemap-index.xml
 Sitemap: https://sona-orbit.github.io/sitemap-home.xml
 Sitemap: https://sona-orbit.github.io/parroting/sitemap.xml
 Sitemap: https://sona-orbit.github.io/shoo/sitemap.xml
