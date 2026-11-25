@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script async src="https://www.googletagmanager.com/gtag/js?id=G-FJGRNJFB15"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FJGRNJFB15");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.href;if(/\/releases\/.*\/download\/|\.dmg(\?|$)|apps\.apple\.com\/|testflight\.apple\.com\//.test(h)){gtag("event","download_click",{link_url:h,link_text:(a.textContent||"").trim().slice(0,60)});}},true);</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="text-scale" content="scale">
+<meta name="theme-color" content="#e4e2dd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1f1e1c" media="(prefers-color-scheme: dark)">
+<script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[download],[target=_blank],.no-prerender"}}]},"eagerness":"moderate"}]}</script>
+<title>Picking a time, on my phone — Sona Orbit</title>
+<meta name="description" content="Why I turned my own Qimen Dunjia timing script into Chengshi, an iPhone app that shows tomorrow&#x27;s energy, the good hours, and every point behind them.">
+<link rel="canonical" href="https://sona-orbit.github.io/blog/picking-a-time-on-my-phone/">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Sona Orbit">
+<meta property="og:title" content="Picking a time, on my phone"><meta property="og:description" content="Why I turned my own Qimen Dunjia timing script into Chengshi, an iPhone app that shows tomorrow&#x27;s energy, the good hours, and every point behind them."><meta property="og:url" content="https://sona-orbit.github.io/blog/picking-a-time-on-my-phone/">
+<meta property="og:image" content="https://sona-orbit.github.io/blog/picking-a-time-on-my-phone/01-chengshi.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@SonaOrbit">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Picking a time, on my phone", "description": "Why I turned my own Qimen Dunjia timing script into Chengshi, an iPhone app that shows tomorrow's energy, the good hours, and every point behind them.", "datePublished": "2026-11-25T10:50:00+08:00", "dateModified": "2026-11-25T10:50:00+08:00", "inLanguage": "en", "image": "https://sona-orbit.github.io/blog/picking-a-time-on-my-phone/01-chengshi.jpg", "mainEntityOfPage": "https://sona-orbit.github.io/blog/picking-a-time-on-my-phone/", "author": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "publisher": {"@type": "Person", "@id": "https://sona-orbit.github.io/#person", "name": "Sona Orbit", "url": "https://sona-orbit.github.io/"}, "isPartOf": {"@id": "https://sona-orbit.github.io/blog/#blog"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%226%22 y=%223%22 width=%2220%22 height=%2226%22 rx=%222%22 fill=%22white%22 stroke=%22black%22 stroke-width=%222%22 transform=%22rotate(-8 16 16)%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--table:#e4e2dd;--paper:#ffffff;--ink:#141414;--muted:#5d5b57;--on-table:#141414;--on-table-muted:#5d5b57;--line:rgba(0,0,0,.14);--shadow:0 1px 2px rgba(0,0,0,.12),0 8px 22px rgba(0,0,0,.10);--note:#fff3a6;--note-ink:#2b2a1d;--tape:rgba(255,255,255,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}}
+:root[data-theme="dark"]{--table:#1f1e1c;--paper:#f7f6f2;--on-table:#ecebe7;--on-table-muted:#a9a6a0;--shadow:0 1px 2px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.45);--note:#e8dc8a;--tape:rgba(255,255,255,.35)}
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--table);color:var(--on-table);font:1rem/1.65 Inter,system-ui,-apple-system,"PingFang TC",sans-serif;min-height:100vh}
+a{color:inherit}
+.top{display:flex;align-items:baseline;gap:14px;padding:18px 20px;max-width:1120px;margin:0 auto}
+.brand{font:700 1.75rem/1 Caveat,cursive;margin:0;text-decoration:none}
+.top .where{font:500 1.25rem/1 Caveat,cursive;color:var(--on-table-muted);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:8px 20px 56px;display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+.paper{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);border-radius:3px;padding:28px 22px 34px;position:relative;min-width:0}
+.paper::before{content:"";position:absolute;top:-10px;left:50%;width:92px;height:22px;margin-left:-46px;background:var(--tape);transform:rotate(-2deg);box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.paper h1{font:700 clamp(2rem,1.3rem + 2.6vw,3rem)/1.08 Caveat,cursive;margin:0 0 6px;text-wrap:balance}
+.paper .when{font:500 1.2rem/1.2 Caveat,cursive;color:var(--muted);margin:0 0 18px}
+.paper h2{font:700 1.75rem/1.15 Caveat,cursive;margin:34px 0 8px;text-wrap:balance}
+.paper h3{font:700 1.4rem/1.2 Caveat,cursive;margin:26px 0 6px;text-wrap:balance}
+.paper p{margin:0 0 14px;max-width:66ch}
+.prose ul{margin:0 0 16px;padding:0;list-style:none;max-width:66ch}
+.prose li{padding:8px 0 8px 22px;border-top:1.5px dashed var(--line);position:relative}
+.prose li:last-child{border-bottom:1.5px dashed var(--line)}
+.prose li::before{content:"";position:absolute;left:4px;top:1.05em;width:7px;height:7px;border:1.5px solid var(--ink);border-radius:50%}
+.paper figure{margin:18px -6px 20px}
+.paper img{display:block;width:100%;height:auto;border-radius:2px;border:1.5px solid var(--line)}
+.paper .src{margin-top:26px;font-size:.9375rem;color:var(--muted)}
+.side{align-self:start}
+.side .note{background:var(--note);color:var(--note-ink);padding:14px 16px 12px;border-radius:2px;box-shadow:var(--shadow);transform:rotate(-1.5deg);font:500 1.2rem/1.3 Caveat,cursive;max-width:280px}
+.side .note p{margin:0}.side .note .b{font-weight:700;font-size:1.35rem}
+.side h2{font:700 1.5rem/1 Caveat,cursive;margin:26px 0 6px}
+.side ol{list-style:none;margin:0;padding:0}
+.side li{padding:9px 0;border-top:1.5px dashed var(--line);font-size:.9375rem}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .side li{border-top-color:rgba(255,255,255,.16)}}
+.side li a{font-weight:600;text-decoration:none}
+.side li a:hover,.side li a:focus-visible{text-decoration:underline}
+.side li a[aria-current]{text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px}
+.side time{display:block;font:500 1.05rem/1.3 Caveat,cursive;color:var(--on-table-muted)}
+.entries{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.entry{display:grid;gap:14px}
+.entry a.pic{display:block}
+.entry h2{margin:0 0 4px;font:700 1.9rem/1.1 Caveat,cursive}
+.entry h2 a{text-decoration:none}
+.entry h2 a:hover,.entry h2 a:focus-visible{text-decoration:underline}
+.entry .when{margin:0 0 8px}
+.entry p{margin:0}
+footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:.875rem;color:var(--on-table-muted)}
+/* 中文文章（lang: zh-Hant）：Caveat 沒有中文字，標題改用 Noto Serif TC */
+.prose{--soft:#f4f2ee;--zh-hand:"Noto Serif TC","Songti TC",serif;--sans:Inter,system-ui,-apple-system,"PingFang TC",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+.prose.zh{line-height:1.85}
+.prose .swap{margin:-8px 0 18px;font:600 .9375rem/1.4 Inter,"PingFang TC",sans-serif}
+.prose .swap a{text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px}
+.prose:not(.zh) th{font:600 .875rem/1.4 Inter,system-ui,sans-serif}
+.prose:not(.zh) .diagram .lbl{font:700 17px Caveat,cursive}
+.prose.zh h1{font:700 clamp(1.75rem,1.3rem + 1.8vw,2.5rem)/1.35 var(--zh-hand);margin:0 0 10px}
+.prose.zh h2{font:700 clamp(1.375rem,1.2rem + .8vw,1.7rem)/1.45 var(--zh-hand);margin:36px 0 10px}
+.prose.zh h3{font:700 1.15rem/1.5 var(--zh-hand);margin:26px 0 8px}
+.prose.zh p,.prose.zh li{text-wrap:pretty}
+.entry h2 a.zh{font:700 1.45rem/1.35 "Noto Serif TC","Songti TC",serif}
+.prose strong{font-weight:600;background:linear-gradient(transparent 62%,var(--note) 62%)}
+.prose code{font-family:var(--mono);font-size:.82em;background:var(--soft);padding:.1em .38em;border-radius:3px;overflow-wrap:anywhere}
+.prose pre{background:var(--soft);border-radius:3px;padding:14px 16px;overflow-x:auto;font-size:.84rem;line-height:1.6;margin:0 0 16px}
+.prose pre code{background:none;padding:0;font-size:inherit;overflow-wrap:normal}
+.prose pre.prompt{white-space:pre-wrap;font:.9375rem/1.75 Inter,system-ui,-apple-system,"PingFang TC",sans-serif;padding:16px 18px;max-width:66ch}.prose pre.prompt code{font:inherit;overflow-wrap:anywhere}
+.prose ol{margin:0 0 16px;padding-left:1.5em;max-width:66ch}
+.prose ol li{padding:6px 0 6px 4px;border-top:0;border-bottom:0}
+.prose ol li::before{content:none}
+.prose ol li:last-child{border-bottom:0}
+.prose .tbl{overflow-x:auto;margin:0 0 18px}
+.prose table{border-collapse:collapse;width:100%;font-size:.9375rem;line-height:1.6}
+.prose th,.prose td{text-align:left;padding:9px 10px;border-bottom:1.5px dashed var(--line);vertical-align:top}
+.prose th{font:700 .9375rem/1.4 var(--zh-hand);border-bottom:1.5px solid var(--ink)}
+.prose tr:last-child td{border-bottom:0}
+/* 內嵌 SVG 架構圖：白紙上的墨線，共用技能庫用便條黃 */
+.prose figure.diagram{margin:22px 0 24px}
+.prose figure.diagram .sv{overflow-x:auto}
+.prose figure.diagram svg{width:100%;height:auto;display:block}
+.prose figure.diagram figcaption{font-size:.875rem;color:var(--muted);margin-top:10px;line-height:1.65}
+@media (max-width:760px){.prose figure.diagram svg{min-width:720px}.prose figure.diagram::before{content:"← swipe to see the whole diagram →";display:block;font-size:.75rem;color:var(--muted);margin-bottom:6px}}
+.prose .diagram .z-global{fill:var(--soft);stroke:var(--ink);stroke-width:1.3}
+.prose .diagram .z-folder{fill:#fff;stroke:var(--ink);stroke-width:1.3}
+.prose .diagram .z-folder2{fill:#fff;stroke:var(--ink);stroke-width:1.3;stroke-dasharray:6 4}
+.prose .diagram .z-brain{fill:var(--note);stroke:var(--ink);stroke-width:1.6}
+.prose .diagram .z-log{fill:#fff;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:2 3}
+.prose .diagram .ag{fill:var(--ink)}
+.prose .diagram text{font-family:var(--sans);fill:var(--ink)}
+.prose .diagram .agt{font-size:12.5px;font-weight:600;text-anchor:middle;fill:#fff}
+.prose .diagram .lbl{font:700 15px var(--zh-hand)}
+.prose .diagram .fs{font-size:12.5px;fill:var(--muted)}
+.prose .diagram .mono{font-family:var(--mono);font-size:12px;text-anchor:middle}
+.prose .diagram .mono-l{font-family:var(--mono);font-size:12px}
+.prose .diagram .step{font:700 20px Caveat,cursive;fill:var(--muted)}
+.prose .diagram .mid{text-anchor:middle}
+.prose .diagram .ar{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-dasharray:5 4}
+.prose .diagram .arl{stroke:var(--ink);stroke-width:1.6;fill:none}
+.prose .diagram .ah,.prose .diagram .ahl{fill:var(--ink)}
+.prose .diagram .eq{stroke:var(--muted);stroke-width:1.3;fill:none}
+.prose .diagram .eqt{font-size:11.5px;fill:var(--muted);text-anchor:middle}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (min-width:920px){
+  .wrap{grid-template-columns:260px minmax(0,1fr);gap:44px;padding-top:18px}
+  .side{position:sticky;top:24px;order:-1}
+  .paper{padding:44px 56px 52px}
+  .paper figure{margin:22px -20px 26px}
+  .entry{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px;align-items:center}
+}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="/">Sona Orbit</a><a class="where" href="/blog/">work diary</a></header>
+<div class="wrap">
+<main><article class="paper prose" lang="en"><h1>Picking a time, on my phone</h1><p class="when"><time datetime="2026-11-25T10:50:00+08:00">November 25, 2026</time> · Sona Orbit</p>
+<figure><img src="01-chengshi.webp" alt="Chengshi&#x27;s twelve-period dial, its mascot Xiaoqi holding a feather fan, and a nine-palace chart in green, yellow and red." width="1280" height="549" fetchpriority="high" decoding="async"></figure>
+<p>Before a hard conversation, I check the time. I&#x27;ve done it for a while with Qimen Dunjia, an old Chinese method for reading the hours: whose position is stronger, which period is smoother, which one to skip.</p>
+<p>I had it as a script on my laptop. That&#x27;s fine at a desk, and useless when someone asks &quot;can we talk this afternoon?&quot; and I&#x27;m out. So I made it into an iPhone app. It&#x27;s called Chengshi (乘時), and it&#x27;s on the App Store today.</p>
+<h2>Tomorrow, each evening</h2>
+<p>I enter my birth date once. Each evening it tells me tomorrow&#x27;s energy, from 0 to 100, and which of the twelve two-hour periods suit me. Tap a period and it shows why: which door, which star, plus or minus how much.</p>
+<p>That last part mattered most to me. I don&#x27;t want a verdict I can&#x27;t look inside. Every score is a sum, and every item in the sum is on the screen.</p>
+<h2>Asking, and picking a time</h2>
+<p>&quot;Ask now&quot; casts the chart for the moment I tap and answers: go, so-so, or wait, with the reasons and a better slot if there is one. &quot;Pick a time&quot; takes a date range and the hours I&#x27;m free, and lays every period out on a heatmap.</p>
+<p>People I add get their own week: who has the upper hand in each period. Places get a direction from home, checked against the hour I&#x27;d leave.</p>
+<h2>Checking it against my days</h2>
+<p>Each night I can spend ten seconds noting how the day actually went. After two weeks the app compares its calls with my notes and a chance baseline, and says which kinds of days fit and which don&#x27;t. If I never check in, everything else still works.</p>
+<h2>What&#x27;s free</h2>
+<p>Tomorrow, the twelve periods, today&#x27;s and tomorrow&#x27;s full charts, asking, people, places and check-ins are free. Pro opens charts for any date, the full check-in conclusions and all 17 lessons on how the chart works. The app is in Traditional Chinese for now; more languages are next.</p>
+<p><a href="https://apps.apple.com/app/id6836862963">Chengshi on the App Store</a> · <a href="https://sona-orbit.github.io/chengshi/">Chengshi website</a></p>
+</article></main>
+<aside class="side" aria-label="About this diary"><div class="note"><p class="b">Work diary</p><p>One person, a dozen small apps. I write down what I actually did and the numbers.</p></div><h2>entries</h2><ol><li><time datetime="2026-11-25">November 25, 2026</time><a href="/blog/picking-a-time-on-my-phone/" aria-current="page">Picking a time, on my phone</a></li><li><time datetime="2026-11-22">November 22, 2026</time><a href="/blog/why-agents-get-worse-with-memory/">Why agents get worse the more they remember</a></li><li><time datetime="2026-11-22">November 22, 2026</time><a href="/blog/agent-memory-keep-and-prune/">Agent 越用越笨？記憶和技能要會留，也要會砍</a></li><li><time datetime="2026-11-20">November 20, 2026</time><a href="/blog/keep-agent-skills-in-folders/">Keep your agent skills in folders, not global</a></li><li><time datetime="2026-11-20">November 20, 2026</time><a href="/blog/skills-in-folders-not-global/">技能不放全域：用資料夾組織 AI agent 的技能</a></li><li><time datetime="2026-11-20">November 20, 2026</time><a href="/blog/i-only-remember-what-i-write/">I only remember what I write</a></li><li><time datetime="2026-11-19">November 19, 2026</time><a href="/blog/after-app-review/">Nine apps were waiting for App Review. Here is what happened.</a></li><li><time datetime="2026-11-16">November 16, 2026</time><a href="/blog/a-day-of-looking-after-11-apps/">A day of looking after 11 apps, alone</a></li></ol></aside>
+</div>
+<footer>made by hand, one card at a time · <a href="/">all the apps</a> · <a href="https://x.com/SonaOrbit">X</a> · <a href="mailto:sona.orbit.hi@gmail.com">sona.orbit.hi@gmail.com</a></footer>
+</body>
+</html>
