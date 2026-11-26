@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sona-orbit.github.io/</loc><lastmod>2026-11-25</lastmod></url>
-  <url><loc>https://sona-orbit.github.io/apps/</loc><lastmod>2026-11-25</lastmod></url>
-  <url><loc>https://sona-orbit.github.io/pages/</loc><lastmod>2026-11-25</lastmod></url>
-  <url><loc>https://sona-orbit.github.io/blog/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://sona-orbit.github.io/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://sona-orbit.github.io/apps/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://sona-orbit.github.io/pages/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://sona-orbit.github.io/blog/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://sona-orbit.github.io/blog/a-day-of-looking-after-11-apps/</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://sona-orbit.github.io/blog/after-app-review/</loc><lastmod>2026-11-19</lastmod></url>
   <url><loc>https://sona-orbit.github.io/blog/i-only-remember-what-i-write/</loc><lastmod>2026-11-20</lastmod></url>
@@ -12,4 +12,5 @@
   <url><loc>https://sona-orbit.github.io/blog/agent-memory-keep-and-prune/</loc><lastmod>2026-11-22</lastmod></url>
   <url><loc>https://sona-orbit.github.io/blog/why-agents-get-worse-with-memory/</loc><lastmod>2026-11-22</lastmod></url>
   <url><loc>https://sona-orbit.github.io/blog/picking-a-time-on-my-phone/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://sona-orbit.github.io/blog/the-lamp-in-the-cupboard/</loc><lastmod>2026-11-26</lastmod></url>
 </urlset>
